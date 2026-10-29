@@ -84,4 +84,4 @@ The content was weighted by role. Developers need more on security and agents, w
 
 After the first three months, Junikom extended the engagement. The development teams now work with documented repositories, an up-to-date knowledge base, and agents that verify their own work. Some teams finished projects two to three months early. Pentests with open-source models, regular checks of the legal environment, and documented AI training round this out.
 
-If your development team is facing a similar situation, let's talk. As a freelancer and Fractional Head of AI, I work directly with your teams and build the tools and workflows together with them.
+If your development team is facing a similar situation, let's talk. As a Fractional Head of AI and Forward Deployed Engineer, I work directly with your teams and build the tools and workflows together with them.

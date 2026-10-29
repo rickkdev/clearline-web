@@ -184,4 +184,4 @@ A good first milestone is one team that answers known process questions with evi
 
 Schedule regular reviews of sources, access, and the agent version. Update in a test environment first and rerun the question set. Judge the value by your actual work, such as the effort spent on corrections afterwards and the search steps genuinely saved. The number of chat messages alone is not a useful measure of success.
 
-As a freelance Fractional Head of AI and Applied AI Engineer, I help companies build systems like this into their existing workflows. That includes choosing suitable tools, integrating them into your infrastructure, and proving that the chosen workflow holds up in day-to-day work. [In a conversation, we will identify your first worthwhile use case](/en#kontakt).
+As a Fractional Head of AI and Forward Deployed Engineer, I help companies build systems like this into their existing workflows. That includes choosing suitable tools, integrating them into your infrastructure, and proving that the chosen workflow holds up in day-to-day work. [In a conversation, we will identify your first worthwhile use case](/en#kontakt).

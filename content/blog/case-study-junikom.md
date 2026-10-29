@@ -84,4 +84,4 @@ Die Inhalte waren nach Rollen gewichtet. Entwickler brauchen mehr zu Sicherheit 
 
 Nach den ersten drei Monaten hat Junikom das Projekt verlängert. Die Entwicklungsteams arbeiten heute mit beschriebenen Repositories, einer aktuellen Wissensbasis und Agenten, die ihre eigene Arbeit prüfen. Einzelne Teams haben Projekte zwei bis drei Monate früher abgeschlossen. Pentests mit Open-Source-Modellen, regelmäßige Prüfungen des rechtlichen Umfelds und eine dokumentierte KI-Schulung ergänzen das.
 
-Wenn Ihr Entwicklungsteam vor einer ähnlichen Ausgangslage steht, lassen Sie uns darüber sprechen. Als Freelancer und Fractional Head of AI arbeite ich direkt mit Ihren Teams und baue die Werkzeuge und Abläufe gemeinsam mit ihnen auf.
+Wenn Ihr Entwicklungsteam vor einer ähnlichen Ausgangslage steht, lassen Sie uns darüber sprechen. Als Fractional Head of AI und Forward Deployed Engineer arbeite ich direkt mit Ihren Teams und baue die Werkzeuge und Abläufe gemeinsam mit ihnen auf.
