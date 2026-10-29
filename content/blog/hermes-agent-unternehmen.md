@@ -12,6 +12,7 @@ Ich würde zunächst einen fachlichen Verantwortlichen und eine technische Betre
 
 ## VPS, Modelle und Datenwege getrennt entscheiden
 
+
 Ein EU-VPS kann den Agentenprozess, lokale Dokumente und seinen Zustand beherbergen. Wenn Hermes ein externes Modell aufruft, können die übermittelten Inhalte trotzdem diesen Server verlassen. Der Standort der VM sagt allein nichts über die Verarbeitung beim Modellanbieter aus.
 
 Planen Sie deshalb drei getrennte Ebenen: den Hermes-Host, das Modell und die angeschlossenen Systeme. Prüfen Sie beim Modell, welcher Endpoint verwendet wird, welche Inhalte die Anwendung sendet und welche Verarbeitungseinstellungen und Verträge gelten. Auch ein externer Suchdienst oder ein MCP-Server kann Daten erhalten. Für die Entscheidung „keine Unternehmensdaten an große US-KI-Anbieter“ müssen diese Wege zusammen betrachtet werden.
@@ -60,6 +61,7 @@ Entscheidend ist eine Grenze, die Hermes selbst ausdrücklich dokumentiert: **Pr
 Für vertrauliche Bereiche trennen Sie deshalb Betriebssystemidentitäten oder Laufzeitumgebungen und beschränken deren Dateizugriffe, Mounts, Netzverbindungen und Integrationskonten. Ein Support-Agent sollte einen Personalordner technisch nicht erreichen können. Diese Trennung muss unabhängig davon funktionieren, ob das Modell seine Anweisungen befolgt.
 
 ## Aus Dokumenten eine prüfbare Wissensbasis machen
+
 
 Hermes' eingebaute Erinnerung ist ein kleiner, kuratierter Speicher für dauerhafte Hinweise und Präferenzen. Sie ist kein Ersatz für ein vollständiges Unternehmensarchiv. Halten Sie dort etwa fest, wo freigegebene Quellen liegen und wie Antworten aufgebaut sein sollen. Die eigentlichen Richtlinien bleiben in einem gepflegten Dokumentbestand oder einem angebundenen Suchsystem. Die [Memory-Dokumentation](https://hermes-agent.nousresearch.com/docs/user-guide/features/memory) erklärt diese Trennung.
 
@@ -159,6 +161,7 @@ Prüfen Sie auf dem gewählten VPS, ob der verwendete Benutzer-Dienst nach dem g
 Dokumentieren Sie außerdem, wo Zustand und Konfiguration liegen, wer Zugangsdaten rotieren darf und wie Sie eine vorherige Version wiederherstellen. Begrenzen Sie aufbewahrte Chatverläufe und Protokolle entsprechend Ihrem Einsatz. Eine Sicherung, die Sitzungen oder Datenbankdateien enthält, kann ebenfalls vertrauliche Unternehmensinformationen enthalten.
 
 ## Vor der Freigabe mit echten Gegenproben testen
+
 
 Verwenden Sie einen kleinen, festen Fragenkatalog, den der Fachbereich bewertet. Ergänzen Sie neben normalen Fragen gezielte Gegenproben:
 

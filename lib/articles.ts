@@ -1,39 +1,95 @@
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
+import type { ArticleSlug } from "./article-visuals";
+import { DEFAULT_LOCALE, type Locale } from "./i18n";
 
-export const ARTICLES = [
+type ArticleText = { title: string; description: string; category: string; summary: string };
+
+const ARTICLE_SOURCES = [
   {
-    slug: "hermes-agent-unternehmen",
-    title: "Hermes Agent im Unternehmen: VPS, Teamprofile und Wissensbasis",
-    description: "Hermes Agent als Wissensassistent im Unternehmen einrichten: EU-VPS, getrennte Teamprofile, Slack, Microsoft Teams und ein überprüfbarer Pilotbetrieb.",
+    slug: "case-study-junikom",
     publishedAt: "2026-10-29",
     updatedAt: "2026-10-29",
-    category: "KI im Unternehmen",
-    summary: "Vom EU-VPS zum Wissensassistenten mit Teamprofilen, Quellen und kontrollierten Zugriffsrechten.",
+    text: {
+      de: {
+        title: "Case Study Junikom: Schneller und sicherer entwickeln mit KI",
+        description: "Wie die Entwicklungsteams von Junikom mit Coding Agents, MCP, Playwright-Verifikation, Open-Source-Pentests und einer KI-Schulung nach Art. 4 AI Act schneller liefern.",
+        category: "Case Study",
+        summary: "Drei Monate Projekt, verlängert um weitere Monate: Entwicklungsteams, Sicherheit, Salesforce und KI-Kompetenz bei einem Softwareanbieter für Kommunen.",
+      },
+      en: {
+        title: "Junikom case study: Shipping faster and more securely with AI",
+        description: "How Junikom's engineering teams ship faster with coding agents, MCP, Playwright verification, open-source pentests and AI literacy training under Article 4 of the AI Act.",
+        category: "Case Study",
+        summary: "A three-month engagement, extended by further months: engineering teams, security, Salesforce and AI literacy at a software vendor for municipalities.",
+      },
+    },
+  },
+  {
+    slug: "hermes-agent-unternehmen",
+    publishedAt: "2026-10-29",
+    updatedAt: "2026-10-29",
+    text: {
+      de: {
+        title: "Hermes Agent im Unternehmen: VPS, Teamprofile und Wissensbasis",
+        description: "Hermes Agent als Wissensassistent im Unternehmen einrichten: EU-VPS, getrennte Teamprofile, Slack, Microsoft Teams und ein überprüfbarer Pilotbetrieb.",
+        category: "KI im Unternehmen",
+        summary: "Vom EU-VPS zum Wissensassistenten mit Teamprofilen, Quellen und kontrollierten Zugriffsrechten.",
+      },
+      en: {
+        title: "Hermes Agent in the company: VPS, team profiles and knowledge base",
+        description: "Setting up Hermes Agent as a company knowledge assistant: EU VPS, separate team profiles, Slack, Microsoft Teams and a verifiable pilot.",
+        category: "AI in the company",
+        summary: "From an EU VPS to a knowledge assistant with team profiles, sources and controlled access rights.",
+      },
+    },
   },
   {
     slug: "coding-agents-verifikation",
-    title: "Coding Agents im Team: Kontext, MCP und überprüfbare Ergebnisse",
-    description: "Coding Agents mit Jira, GitHub und GitLab verbinden und ihre Arbeit mit Playwright, isolierten Browserprofilen und kurzen Prüfzyklen verifizieren.",
     publishedAt: "2026-10-28",
     updatedAt: "2026-10-29",
-    category: "AI Engineering",
-    summary: "Wie ein Team Coding Agents mit passendem Kontext ausstattet und Ergebnisse im echten Produkt prüft.",
+    text: {
+      de: {
+        title: "Coding Agents im Team: Kontext, MCP und überprüfbare Ergebnisse",
+        description: "Coding Agents mit Jira, GitHub und GitLab verbinden und ihre Arbeit mit Playwright, isolierten Browserprofilen und kurzen Prüfzyklen verifizieren.",
+        category: "AI Engineering",
+        summary: "Wie ein Team Coding Agents mit passendem Kontext ausstattet und Ergebnisse im echten Produkt prüft.",
+      },
+      en: {
+        title: "Coding agents in the team: context, MCP and verifiable results",
+        description: "Connecting coding agents to Jira, GitHub and GitLab and verifying their work with Playwright, isolated browser profiles and short review cycles.",
+        category: "AI Engineering",
+        summary: "How a team gives coding agents the right context and verifies results in the real product.",
+      },
+    },
   },
-];
+] satisfies { slug: ArticleSlug; publishedAt: string; updatedAt: string; text: Record<Locale, ArticleText> }[];
 
-export function getArticle(slug: string) {
-  const article = ARTICLES.find((item) => item.slug === slug);
-  if (!article) return undefined;
-  return { ...article, body: articleMarkdown(article) };
+export type Article = Omit<(typeof ARTICLE_SOURCES)[number], "text"> & ArticleText;
+
+export const ARTICLE_SLUGS = ARTICLE_SOURCES.map(({ slug }) => slug);
+
+export function getArticles(locale: Locale): Article[] {
+  return ARTICLE_SOURCES.map(({ text, ...article }) => ({ ...article, ...text[locale] }));
 }
 
-export function articleMarkdown(article: (typeof ARTICLES)[number]) {
-  return readFileSync(join(process.cwd(), "content", "blog", `${article.slug}.md`), "utf8");
+export function findArticle(locale: Locale, slug: string) {
+  return getArticles(locale).find((article) => article.slug === slug);
+}
+
+export function getArticle(locale: Locale, slug: string) {
+  const article = findArticle(locale, slug);
+  if (!article) return undefined;
+  return { ...article, body: articleMarkdown(locale, article) };
+}
+
+export function articleMarkdown(locale: Locale, article: Article) {
+  const directory = locale === DEFAULT_LOCALE ? ["content", "blog"] : ["content", "blog", locale];
+  return readFileSync(join(process.cwd(), ...directory, `${article.slug}.md`), "utf8");
 }
 
 export function headingId(text: string) {
-  return text.normalize("NFKD").replace(/[\u0300-\u036f]/g, "").replace(/ß/g, "ss").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+  return text.normalize("NFKD").replace(/[̀-ͯ]/g, "").replace(/ß/g, "ss").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 }
 
 export function articleHeadings(body: string) {

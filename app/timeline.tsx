@@ -4,13 +4,9 @@ import { Fragment, useEffect, useRef, useState } from "react";
 
 const WEEKS = [1, 2, 3, 4, 5, 6];
 
-const PHASES = [
-  { title: "Gemeinsam priorisieren", text: "Nutzen und Risiko bewerten." },
-  { title: "Prototyp testen", text: "Mit Ihren Mitarbeitenden im Alltag." },
-  { title: "Production", text: "Integration, Prüfung, Freigabe." },
-];
+type Phase = { title: string; text: string };
 
-export function Timeline() {
+export function Timeline({ phases, phaseLabel, weekLabel }: { phases: Phase[]; phaseLabel: string; weekLabel: string }) {
   const ref = useRef<HTMLDivElement>(null);
   const [on, setOn] = useState(false);
 
@@ -30,13 +26,13 @@ export function Timeline() {
 
   return (
     <div className={on ? "tl on" : "tl"} ref={ref}>
-      <div className="hd">Phase</div>
+      <div className="hd">{phaseLabel}</div>
       <div className="wk">
         {WEEKS.map((w) => (
-          <div key={w}>Woche {w}</div>
+          <div key={w}>{weekLabel} {w}</div>
         ))}
       </div>
-      {PHASES.map((p, i) => (
+      {phases.map((p, i) => (
         <Fragment key={p.title}>
           <div className="lb">
             <h3>{p.title}</h3>

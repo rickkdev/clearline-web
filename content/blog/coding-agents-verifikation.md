@@ -31,6 +31,7 @@ Die folgenden Empfehlungen verbinden diese Ansätze mit den offiziellen Werkzeug
 
 ## Kontext aus Jira, Confluence und dem Repository holen
 
+
 Ein Agent braucht selten das gesamte Unternehmenswissen. Für eine konkrete Änderung sind meist das zugehörige Ticket, die relevante Produktentscheidung, die betroffenen Dateien und die bisherigen Tests hilfreich. Lassen Sie ihn zunächst benennen, welche Frage mit welcher Quelle beantwortet werden soll.
 
 MCP steht für Model Context Protocol. Es vereinheitlicht die Verbindung zwischen einem Agenten-Client und externen Werkzeugen oder Datenquellen. Es ersetzt weder die Berechtigungen des jeweiligen Dienstes noch die Prüfung, ob ein konkreter Aufruf sinnvoll ist. Eine gute Auswahl beginnt mit den vorhandenen Werkzeugen. Wenn ein Repository bereits lokal ausgecheckt ist und die passende CLI vorhanden ist, braucht es für denselben Dateizugriff nicht zusätzlich einen MCP-Server.
@@ -52,6 +53,7 @@ Auch [GitLab bietet einen offiziellen MCP Server](https://docs.gitlab.com/user/m
 
 ## Für jede Aufgabe eine eigene Arbeitsumgebung
 
+
 Parallele Agenten dürfen nicht versehentlich dieselben Dateien, denselben Datenbestand oder dieselbe angemeldete Browsersitzung verändern. Eine eigene Git-Worktree pro Umsetzung trennt Arbeitskopien. Ein eigener Testmandant oder eine eigene Datenbank trennt Anwendungszustand. Diese Grenzen lösen unterschiedliche Probleme und müssen zusammenpassen.
 
 Das gilt auch für Ports, temporäre Uploads und Testkonten. Wenn zwei Agenten denselben Vorgang bearbeiten, kann ein Test grün werden, weil der andere Agent den gewünschten Zustand bereits erzeugt hat. Weisen Sie deshalb jeder Aufgabe einen eigenen Datensatz zu. Führen Sie parallele Browser-Tests erst ein, wenn die Testdaten ebenfalls unabhängig sind.
@@ -59,6 +61,7 @@ Das gilt auch für Ports, temporäre Uploads und Testkonten. Wenn zwei Agenten d
 Ein separates Chrome-Profil verhindert, dass die Testreise Ihre persönlichen Cookies und Anmeldungen übernimmt. Es macht die besuchte Anwendung nicht automatisch ungefährlich und ist keine Sicherheits-Sandbox für beliebige Programme. Ein eingeloggter Testnutzer kann weiterhin alles tun, wozu sein Account berechtigt ist. Wenn der Agent fremden Code ausführt, gehört zusätzlich die Ausführungsumgebung selbst begrenzt, etwa durch eine dafür eingerichtete VM oder einen Container.
 
 ## Mit Playwright durch die echte Oberfläche prüfen
+
 
 [Playwright Test isoliert Tests über eigene Browser-Kontexte](https://playwright.dev/docs/browser-contexts). Für viele UI-Prüfungen reicht das aus. Wenn Sie ausdrücklich Google Chrome prüfen möchten, können Sie einen [Chrome-Kanal konfigurieren](https://playwright.dev/docs/browsers). Die Tests verwenden weiterhin separate Kontexte und übernehmen nicht Ihr persönliches Standardprofil. Chrome muss dafür auf der Testmaschine installiert sein.
 

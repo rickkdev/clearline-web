@@ -5,38 +5,16 @@ import { useEffect, useRef } from "react";
 const PATH =
   "M100 0 C190 80 190 165 100 245 S10 410 100 490 S190 655 100 735 S10 900 100 980";
 
-const FIELDS = [
-  {
-    side: "r",
-    top: 40,
-    title: "Service & Kommunikation",
-    text: "Anfragen aus Hotline, E-Mail und Chat vorsortieren und beantworten.",
-    result: "Kürzere Reaktionszeiten, entlastetes Team",
-  },
-  {
-    side: "l",
-    top: 290,
-    title: "Zahlungsverkehr & Backoffice",
-    text: "Belege erfassen, abgleichen, Ausnahmen zur Klärung vorbereiten.",
-    result: "Weniger manuelle Prüfschritte",
-  },
-  {
-    side: "r",
-    top: 535,
-    title: "Angebotsvorlagen, Vertrieb & CRM",
-    text: "Angebote aus Vorlagen erstellen, Anfragen qualifizieren, CRM-Daten aktuell halten.",
-    result: "Schnellere Angebote, saubere Daten",
-  },
-  {
-    side: "l",
-    top: 780,
-    title: "Softwareentwicklung",
-    text: "KI-gestütztes Entwickeln mit sauberem Code und passendem Tooling.",
-    result: "Kürzere Projektlaufzeiten",
-  },
+const LAYOUT = [
+  { side: "r", top: 40 },
+  { side: "l", top: 290 },
+  { side: "r", top: 535 },
+  { side: "l", top: 780 },
 ] as const;
 
-export function Swirl() {
+type Field = { title: string; text: string; result: string };
+
+export function Swirl({ fields }: { fields: Field[] }) {
   const swirlRef = useRef<HTMLDivElement>(null);
   const fgRef = useRef<SVGPathElement>(null);
   const dotRef = useRef<HTMLDivElement>(null);
@@ -82,8 +60,8 @@ export function Swirl() {
         </svg>
         <div className="dot" ref={dotRef} />
       </div>
-      {FIELDS.map((f, i) => (
-        <div key={f.title} className={`si ${f.side}`} style={{ top: f.top }}>
+      {fields.map((f, i) => (
+        <div key={f.title} className={`si ${LAYOUT[i].side}`} style={{ top: LAYOUT[i].top }}>
           <span className="n">{String(i + 1).padStart(2, "0")}</span>
           <h3>{f.title}</h3>
           <p>{f.text}</p>

@@ -1,53 +1,66 @@
 import type { Metadata } from "next";
+import { getDictionary } from "./dictionaries";
+import { DEFAULT_LOCALE, LOCALE_TAGS, LOCALES, localePath, type Locale } from "./i18n";
 
 export const SITE = {
   origin: "https://www.riccardolamanna.de",
-  name: "Rick Lamanna",
+  name: "Riccardo Lamanna",
   fullName: "Riccardo Lamanna",
-  title: "Rick Lamanna | Fractional Head of AI & Applied AI Engineer",
-  description: "Rick Lamanna unterstützt Unternehmen in Deutschland als freiberuflicher Applied AI Engineer und Fractional Head of AI. KI direkt im Team umsetzen.",
-  role: "Freiberuflicher Applied AI Engineer und Fractional Head of AI",
-  biography: "Riccardo (Rick) Lamanna ist freiberuflicher Applied AI Engineer und Fractional Head of AI. Er arbeitet direkt mit Unternehmen in Deutschland zusammen, um KI in bestehende Prozesse zu integrieren. Wie ein Forward Deployed Engineer begleitet er die Arbeit von der Auswahl geeigneter Werkzeuge über die Integration bis zur Überprüfung im Arbeitsalltag.",
   profiles: ["https://www.rick.build/", "https://github.com/rickkdev"],
 };
 
 export const PREVIEW = process.env.VERCEL_ENV === "preview";
 
-export function pageMetadata(title: string, description: string, path: string): Metadata {
-  const url = new URL(path, SITE.origin).href;
+export function absoluteUrl(locale: Locale, path: string) {
+  return new URL(localePath(locale, path), SITE.origin).href;
+}
+
+export function languageAlternates(path: string) {
   return {
-    title,
-    description,
-    alternates: { canonical: url },
-    openGraph: { title, description, url, siteName: SITE.name, locale: "de_DE", type: "website", images: [{ url: `${SITE.origin}/opengraph-image`, width: 1200, height: 630, alt: SITE.title }] },
-    twitter: { card: "summary_large_image", title, description, images: [`${SITE.origin}/opengraph-image`] },
+    ...Object.fromEntries(LOCALES.map((locale) => [locale, absoluteUrl(locale, path)])),
+    "x-default": absoluteUrl(DEFAULT_LOCALE, path),
   };
 }
 
-export const identityGraph = {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Person",
-      "@id": `${SITE.origin}/#person`,
-      name: SITE.name,
-      alternateName: SITE.fullName,
-      givenName: "Riccardo",
-      familyName: "Lamanna",
-      url: `${SITE.origin}/`,
-      description: SITE.biography,
-      jobTitle: ["Freiberuflicher Applied AI Engineer", "Fractional Head of AI"],
-      sameAs: SITE.profiles,
-      knowsAbout: ["Applied AI Engineering", "KI-Einführung in Unternehmen", "KI-Agents", "Coding Agents", "Selbst gehostete KI"],
-    },
-    {
-      "@type": "WebSite",
-      "@id": `${SITE.origin}/#website`,
-      url: `${SITE.origin}/`,
-      name: SITE.name,
-      description: SITE.description,
-      inLanguage: "de-DE",
-      publisher: { "@id": `${SITE.origin}/#person` },
-    },
-  ],
-};
+export function pageMetadata(locale: Locale, title: string, description: string, path: string): Metadata {
+  const url = absoluteUrl(locale, path);
+  const image = absoluteUrl(locale, "/opengraph-image");
+  return {
+    title,
+    description,
+    alternates: { canonical: url, languages: languageAlternates(path) },
+    openGraph: { title, description, url, siteName: SITE.name, locale: LOCALE_TAGS[locale].openGraph, type: "website", images: [{ url: image, width: 1200, height: 630, alt: getDictionary(locale).site.title }] },
+    twitter: { card: "summary_large_image", title, description, images: [image] },
+  };
+}
+
+export function identityGraph(locale: Locale) {
+  const { site } = getDictionary(locale);
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": `${SITE.origin}/#person`,
+        name: SITE.name,
+        alternateName: SITE.fullName,
+        givenName: "Riccardo",
+        familyName: "Lamanna",
+        url: `${SITE.origin}/`,
+        description: site.biography,
+        jobTitle: site.jobTitles,
+        sameAs: SITE.profiles,
+        knowsAbout: site.knowsAbout,
+      },
+      {
+        "@type": "WebSite",
+        "@id": `${SITE.origin}/#website`,
+        url: `${SITE.origin}/`,
+        name: SITE.name,
+        description: site.description,
+        inLanguage: LOCALES.map((item) => LOCALE_TAGS[item].schema),
+        publisher: { "@id": `${SITE.origin}/#person` },
+      },
+    ],
+  };
+}

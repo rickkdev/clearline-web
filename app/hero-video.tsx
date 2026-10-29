@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
-export function HeroVideo() {
+export function HeroVideo({ label }: { label: string }) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [failed, setFailed] = useState(false);
 
@@ -39,7 +39,7 @@ export function HeroVideo() {
           muted
           playsInline
           preload="none"
-          aria-label="Riccardo Lamanna arbeitet an seinem Laptop"
+          aria-label={label}
           onEnded={() => {
             const video = videoRef.current;
             if (!video) return;
