@@ -49,7 +49,7 @@ function PhotoHero({ hero, src, position = "70% 50%", dark = false, className = 
   );
 }
 
-const VARIANTS: Variant[] = [
+const ROUND_ONE: Variant[] = [
   {
     id: "frame",
     name: "Editorial-Rahmen",
@@ -317,23 +317,155 @@ const VARIANTS: Variant[] = [
   },
 ];
 
+type Layout = "light" | "dark" | "veil" | "half" | "tear-hero" | "tear" | "tear-flip" | "blob" | "circle" | "arch" | "slant" | "card" | "offset" | "duo-tear";
+type Shot = { id: string; name: string; src: string; layout: Layout; note: string; position?: string };
+
+function ShapeHero({ hero, src, shape, position = "50% 30%" }: { hero: Hero; src: string; shape: Layout; position?: string }) {
+  return (
+    <div className="ho-split ho-inner">
+      <Copy hero={hero} />
+      <div className={`ho-shape ho-shape-${shape}`}>
+        <Image src={src} alt="" fill sizes="(max-width: 860px) 100vw, 45vw" style={{ objectFit: "cover", objectPosition: position }} />
+      </div>
+    </div>
+  );
+}
+
+const LAYOUTS: Record<Layout, (hero: Hero, shot: Shot) => ReactNode> = {
+  light: (hero, s) => <PhotoHero hero={hero} src={s.src} position={s.position} className="ho-fade-left" />,
+  dark: (hero, s) => <PhotoHero hero={hero} src={s.src} position={s.position} dark className="ho-scrim-left" />,
+  veil: (hero, s) => <PhotoHero hero={hero} src={s.src} position={s.position} className="ho-veil" />,
+  half: (hero, s) => (
+    <div className="ho-half">
+      <div className="ho-half-media"><Image src={s.src} alt="" fill sizes="(max-width: 860px) 100vw, 50vw" style={{ objectFit: "cover", objectPosition: s.position ?? "60% 40%" }} /></div>
+      <div className="ho-inner"><Copy hero={hero} /></div>
+    </div>
+  ),
+  "tear-hero": (hero, s) => (
+    <div className="ho-tear-hero">
+      <div className="ho-tear-hero-media"><Image src={s.src} alt="" fill sizes="(max-width: 860px) 100vw, 52vw" style={{ objectFit: "cover", objectPosition: s.position ?? "60% 30%" }} /></div>
+      <div className="ho-inner"><Copy hero={hero} /></div>
+    </div>
+  ),
+  tear: (hero, s) => <ShapeHero hero={hero} src={s.src} shape="tear" position={s.position} />,
+  "tear-flip": (hero, s) => <ShapeHero hero={hero} src={s.src} shape="tear-flip" position={s.position} />,
+  blob: (hero, s) => <ShapeHero hero={hero} src={s.src} shape="blob" position={s.position} />,
+  circle: (hero, s) => <ShapeHero hero={hero} src={s.src} shape="circle" position={s.position} />,
+  arch: (hero, s) => <ShapeHero hero={hero} src={s.src} shape="arch" position={s.position} />,
+  slant: (hero, s) => <ShapeHero hero={hero} src={s.src} shape="slant" position={s.position} />,
+  card: (hero, s) => <ShapeHero hero={hero} src={s.src} shape="card" position={s.position} />,
+  offset: (hero, s) => <ShapeHero hero={hero} src={s.src} shape="offset" position={s.position} />,
+  "duo-tear": (hero, s) => <ShapeHero hero={hero} src={s.src} shape="duo-tear" position={s.position} />,
+};
+
+const LAYOUT_NAMES: Record<Layout, string> = {
+  light: "Vollbild hell", dark: "Vollbild dunkel", veil: "Vollbild mit Schleier", half: "Halbe Seite randlos",
+  "tear-hero": "Tropfenform wie heute", tear: "Tropfen", "tear-flip": "Tropfen gespiegelt", blob: "Organische Form",
+  circle: "Kreis", arch: "Bogen", slant: "Schräge Kante", card: "Karte", offset: "Versetzter Rahmen", "duo-tear": "Duoton-Tropfen",
+};
+
+const A = (file: string) => `/hero-options/ai/${file}.jpg`;
+const R1 = (file: string) => `/hero-options/${file}.jpg`;
+
+const GALLERY: Shot[] = [
+  { id: "g-tear-office", name: "Büro im Tropfen", src: R1("office"), layout: "tear-hero", position: "72% 40%", note: "Das Büro-Motiv in exakt der Tropfenform der heutigen Startseite. Direkter Ersatz für das Video, ohne Layoutänderung." },
+  { id: "g-tear-studio", name: "Studio im Tropfen", src: R1("studio"), layout: "tear-hero", position: "75% 30%", note: "Studio-Porträt in der heutigen Tropfenform." },
+  { id: "g-tear-night", name: "Abendstimmung im Tropfen", src: R1("night"), layout: "tear-hero", position: "72% 40%", note: "Dunkles Motiv im hellen Layout. Der Kontrast macht die Form zum Blickfang." },
+  { id: "g-tear-team", name: "Kundenteam im Tropfen", src: R1("team"), layout: "tear-hero", position: "68% 40%", note: "Team-Szene in der heutigen Tropfenform." },
+  { id: "g-tear-workshop", name: "Workshop im Tropfen", src: R1("workshop"), layout: "tear-hero", position: "65% 35%", note: "Whiteboard-Szene in der Tropfenform." },
+  { id: "g-tear-thinking", name: "Ruhiger Moment im Tropfen", src: R1("thinking"), layout: "tear-hero", position: "70% 40%", note: "Fensterblick in der Tropfenform." },
+  { id: "g-tear-sq-office", name: "Tropfen: am Laptop", src: A("teardrop-office"), layout: "tear", note: "Eigens für die Tropfenform generiert: zentriertes Motiv mit Luft um den Kopf." },
+  { id: "g-tear-sq-smile", name: "Tropfen: Lächeln", src: A("teardrop-smile"), layout: "tear", note: "Freundliches Porträt, zentriert für den Tropfen-Ausschnitt." },
+  { id: "g-tear-sq-think", name: "Tropfen gespiegelt: nachdenklich", src: A("teardrop-think"), layout: "tear-flip", note: "Gespiegelte Tropfenform, die Spitze zeigt nach links zum Text." },
+  { id: "g-tear-sq-workshop", name: "Tropfen: am Whiteboard", src: A("teardrop-workshop"), layout: "tear", note: "Arbeitssituation statt Porträt, im Tropfen." },
+  { id: "g-tear-sq-night", name: "Tropfen: nachts am Laptop", src: A("teardrop-night"), layout: "tear-flip", note: "Dunkles Motiv im gespiegelten Tropfen." },
+  { id: "g-tear-sq-factory", name: "Organische Form: Werkhalle", src: A("teardrop-factory"), layout: "blob", note: "Weiche, organische Form statt Tropfen. In der Produktion, Schutzbrille im Haar." },
+  { id: "g-tear-sq-outdoor", name: "Kreis: draußen", src: A("teardrop-outdoor"), layout: "circle", note: "Klassischer Kreis. Ruhig und vertraut." },
+  { id: "g-tear-sq-stage", name: "Tropfen: Bühne", src: A("teardrop-stage"), layout: "tear", note: "Vortrag mit Headset, im Tropfen." },
+  { id: "g-tear-sq-mono", name: "Duoton-Tropfen", src: A("teardrop-mono"), layout: "duo-tear", note: "Schwarzweiß-Porträt, orange eingefärbt und im Tropfen." },
+  { id: "g-headshot-blob", name: "Organische Form: Headshot", src: A("headshot"), layout: "blob", note: "Klassischer Business-Headshot in weicher Form." },
+  { id: "g-headshot-outdoor", name: "Kreis: Headshot im Grünen", src: A("headshot-outdoor"), layout: "circle", note: "Natürliches Licht, Kreisausschnitt." },
+  { id: "g-studio-blue", name: "Bogen: Studio Blau", src: A("studio-blue"), layout: "arch", note: "Dunkelblauer Studiohintergrund im Bogen. Seriös, ruhig." },
+  { id: "g-studio-orange", name: "Karte: Studio Orange", src: A("studio-orange"), layout: "card", note: "Porträt vor Markenorange. Sehr markant." },
+  { id: "g-studio-white", name: "Bogen: High-Key", src: A("studio-white"), layout: "arch", note: "Helles Studio, weicher Bogen. Sehr clean." },
+  { id: "g-studio-dark", name: "Versetzter Rahmen: Low-Key", src: A("studio-dark"), layout: "offset", note: "Dramatisches Licht, mit orangefarbenem Versatz." },
+  { id: "g-profile", name: "Schräge Kante: Profil", src: A("profile"), layout: "slant", note: "Profilansicht mit diagonal angeschnittener Bildkante." },
+  { id: "g-laugh", name: "Karte: Lachen", src: A("laugh"), layout: "card", note: "Echtes Lachen. Nahbar, sympathisch." },
+  { id: "g-lean-wall", name: "Schräge Kante: an der Wand", src: A("lean-wall"), layout: "slant", note: "Selbstbewusste Pose vor Beton." },
+  { id: "g-glasses", name: "Versetzter Rahmen: Brille", src: A("glasses"), layout: "offset", note: "Porträt mit Brille in der Hand, sachlich." },
+  { id: "g-chair", name: "Bogen: Stuhl", src: A("chair"), layout: "arch", note: "Lockere Pose auf dem Stuhl, Studio." },
+  { id: "g-boardroom", name: "Im Boardroom", src: A("boardroom"), layout: "light", note: "Präsentation vor der Geschäftsführung." },
+  { id: "g-rooftop", name: "Dachterrasse, goldene Stunde", src: A("rooftop"), layout: "half", note: "Skyline im Hintergrund, warmes Licht." },
+  { id: "g-coworking", name: "Coworking", src: A("coworking"), layout: "light", note: "Ruhiger, hochwertiger Arbeitsplatz mit Pflanzen." },
+  { id: "g-standing-desk", name: "Am Stehtisch", src: A("standing-desk"), layout: "half", note: "Zwei Bildschirme, Blick in die Kamera. Bild randlos auf der rechten Hälfte." },
+  { id: "g-hallway", name: "Im Flur, in Bewegung", src: A("hallway"), layout: "light", note: "Dynamisch, unterwegs zum nächsten Termin." },
+  { id: "g-cafe", name: "Im Café", src: A("cafe"), layout: "light", note: "Entspannt, Laptop und Espresso." },
+  { id: "g-library", name: "Bibliothek", src: A("library"), layout: "half", note: "Liest ein Prozessdokument. Gründlich, ruhig." },
+  { id: "g-warehouse", name: "Im Lager", src: A("warehouse"), layout: "dark", note: "Logistik beim Mittelständler, mit Lagerleiter." },
+  { id: "g-lab", name: "Im Labor", src: A("lab"), layout: "dark", note: "Engineering-Umfeld mit Techniker." },
+  { id: "g-handshake", name: "Handschlag", src: A("handshake"), layout: "half", note: "Mit einem Inhaber am Eingang. Vertrauen und Abschluss." },
+  { id: "g-sticky-notes", name: "Prozess-Mapping", src: A("sticky-notes"), layout: "light", note: "Haftnotizen an der Glaswand, Blick zurück zur Kamera." },
+  { id: "g-video-call", name: "Im Video-Call", src: A("video-call"), layout: "half", note: "Remote-Beratung, erklärend." },
+  { id: "g-train", name: "Im ICE", src: A("train"), layout: "dark", note: "Unterwegs zum Kunden, Arbeit im Zug." },
+  { id: "g-night-city", name: "Nachts über der Stadt", src: A("night-city"), layout: "dark", note: "Hochhausfenster, Lichter der Stadt." },
+  { id: "g-whiteboard-close", name: "Nah am Glasboard", src: A("whiteboard-close"), layout: "half", note: "Nahaufnahme beim Skizzieren." },
+  { id: "g-server-room", name: "Im Serverraum", src: A("server-room"), layout: "dark", note: "Technik und Betrieb, kühle Töne mit orangem Akzent." },
+  { id: "g-podium", name: "Am Rednerpult", src: A("podium"), layout: "dark", note: "Konferenzvortrag, warme Bühne." },
+  { id: "g-panel", name: "Auf dem Panel", src: A("panel"), layout: "dark", note: "Diskussionsrunde, Mikrofon in der Hand." },
+  { id: "g-outdoor-walk", name: "Vor dem Firmensitz", src: A("outdoor-walk"), layout: "veil", note: "Vor einem modernen Mittelstands-Gebäude." },
+  { id: "g-kitchen-table", name: "Am Gemeinschaftstisch", src: A("kitchen-table"), layout: "light", note: "Lockere Zusammenarbeit, Lachen mit Kollegin." },
+  { id: "g-slant-office", name: "Schräge Kante: Büro", src: R1("office"), layout: "slant", position: "70% 40%", note: "Das Büro-Motiv mit diagonaler Kante." },
+  { id: "g-half-studio", name: "Halbe Seite: Studio", src: R1("studio"), layout: "half", position: "75% 30%", note: "Studio-Porträt randlos auf der rechten Hälfte." },
+  { id: "g-circle-night", name: "Kreis: Abend", src: R1("night"), layout: "circle", position: "72% 40%", note: "Abendmotiv im Kreis." },
+  { id: "g-blob-thinking", name: "Organische Form: Fensterblick", src: R1("thinking"), layout: "blob", position: "70% 40%", note: "Ruhiger Moment in organischer Form." },
+  { id: "g-arch-stage", name: "Bogen: Bühne", src: R1("stage"), layout: "arch", position: "60% 30%", note: "Bühnenmotiv im Bogen." },
+  { id: "g-duo-tear-studio", name: "Duoton-Tropfen: Studio", src: R1("studio"), layout: "duo-tear", position: "75% 30%", note: "Studio-Porträt orange eingefärbt im Tropfen." },
+];
+
+const VARIANTS: Variant[] = [
+  ...ROUND_ONE,
+  ...GALLERY.map((shot): Variant => ({
+    id: shot.id,
+    name: shot.name,
+    source: "KI-Bild",
+    note: `${LAYOUT_NAMES[shot.layout]}. ${shot.note}`,
+    render: ({ hero }) => LAYOUTS[shot.layout](hero, shot),
+  })),
+];
+
 export default async function HeroOptionsPage({ params }: PageProps<"/[lang]/hero-options">) {
   const lang = await localeParam(params);
   const { home } = getDictionary(lang);
   return (
     <main className="ho-page">
+      <svg className="hero-clip-defs" width="0" height="0" aria-hidden="true">
+        <defs>
+          <clipPath id="ho-tear" clipPathUnits="objectBoundingBox">
+            <path d="M 1 0 C .87 .29 1 .59 .81 .81 C .62 1.04 .27 1.01 .12 .79 C -.04 .56 .08 .28 .33 .22 C .59 .16 .78 .19 1 0 Z" />
+          </clipPath>
+          <clipPath id="ho-tear-flip" clipPathUnits="objectBoundingBox">
+            <path d="M 0 0 C .13 .29 0 .59 .19 .81 C .38 1.04 .73 1.01 .88 .79 C 1.04 .56 .92 .28 .67 .22 C .41 .16 .22 .19 0 0 Z" />
+          </clipPath>
+          <clipPath id="ho-blob" clipPathUnits="objectBoundingBox">
+            <path d="M .56 .02 C .8 .04 .99 .2 .97 .46 C .95 .7 .86 .95 .55 .98 C .27 1.01 .03 .84 .02 .55 C .01 .27 .25 0 .56 .02 Z" />
+          </clipPath>
+        </defs>
+      </svg>
       <header className="w speaking-page-header">
         <Link className="lnk" href="/">← Zur Startseite</Link>
         <div className="tag">Hero · {VARIANTS.length} Varianten</div>
         <h1>Welcher Hero passt?</h1>
         <p className="intro">
           Alternativen zum aktuellen Video. Einige nutzen Ausschnitte aus Ihrer Aufnahme,
-          einige sind mit Codex neu generiert, einige kommen ganz ohne Foto aus.
+          einige sind mit Codex neu generiert, einige kommen ganz ohne Foto aus. Ab Nummer 22 folgen weitere KI-Motive in verschiedenen Bildformen, darunter die Tropfenform der heutigen Startseite.
           Alle zeigen den echten Hero-Text. Nennen Sie mir Ihre Favoriten per Nummer.
         </p>
-        <nav className="ho-jump" aria-label="Varianten">
-          {VARIANTS.map((v, i) => <a key={v.id} href={`#${v.id}`}>{String(i + 1).padStart(2, "0")} {v.name}</a>)}
-        </nav>
+        <details className="ho-jump-wrap">
+          <summary>Alle {VARIANTS.length} Varianten anzeigen</summary>
+          <nav className="ho-jump" aria-label="Varianten">
+            {VARIANTS.map((v, i) => <a key={v.id} href={`#${v.id}`}>{String(i + 1).padStart(2, "0")} {v.name}</a>)}
+          </nav>
+        </details>
       </header>
       {VARIANTS.map((v, i) => (
         <section key={v.id} id={v.id} className="ho-variant">

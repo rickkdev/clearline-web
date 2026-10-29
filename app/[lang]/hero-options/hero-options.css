@@ -114,3 +114,32 @@
 .ho-bento-c{grid-column:1/3}
 @media(max-width:860px){.ho-bento{grid-template-rows:160px 130px 150px}}
 @media(max-width:860px){.ho-window pre{font-size:11.5px;padding:16px}.ho-bento-kpi{padding:12px}}
+.ho-jump-wrap summary{cursor:pointer;font-weight:700;color:var(--acc)}
+.ho-jump-wrap .ho-jump{margin-top:12px}
+.ho-shape{position:relative;aspect-ratio:1;width:100%;max-width:520px;justify-self:end}
+.ho-shape img{display:block}
+.ho-shape-tear{clip-path:url(#ho-tear)}
+.ho-shape-tear-flip{clip-path:url(#ho-tear-flip)}
+.ho-shape-blob{clip-path:url(#ho-blob)}
+.ho-shape-circle{border-radius:50%;overflow:hidden;box-shadow:0 0 0 14px #fff,0 0 0 16px var(--acc)}
+.ho-shape-arch{aspect-ratio:4/5;border-radius:999px 999px 0 0;overflow:hidden;max-width:440px}
+.ho-shape-slant{aspect-ratio:4/5;clip-path:polygon(22% 0,100% 0,100% 100%,0 100%);max-width:480px}
+.ho-shape-card{aspect-ratio:4/5;border-radius:24px;overflow:hidden;box-shadow:0 30px 60px rgba(0,0,0,.18);max-width:440px}
+.ho-shape-offset{aspect-ratio:4/5;max-width:420px;box-shadow:24px 24px 0 var(--acc);margin:0 24px 24px 0}
+.ho-shape-duo-tear{clip-path:url(#ho-tear);background:var(--acc)}
+.ho-shape-duo-tear img{filter:grayscale(1) contrast(1.05) brightness(1.2);mix-blend-mode:multiply}
+.ho-half{position:relative;min-height:640px;display:flex;align-items:center}
+.ho-half-media{position:absolute;top:0;right:0;bottom:0;width:50%}
+.ho-half .ho-inner{width:100%}
+.ho-half .ho-copy{max-width:min(540px,44%)}
+.ho-tear-hero{position:relative;min-height:640px;display:flex;align-items:center}
+.ho-tear-hero-media{position:absolute;inset:0 -24px 12px auto;width:52%;clip-path:url(#ho-tear)}
+.ho-tear-hero .ho-inner{width:100%}
+.ho-tear-hero .ho-copy{max-width:min(560px,48%)}
+@media(max-width:860px){
+  .ho-shape{justify-self:center}
+  .ho-half,.ho-tear-hero{flex-direction:column;align-items:stretch;min-height:0}
+  .ho-half-media,.ho-tear-hero-media{position:relative;inset:auto;width:100%;height:clamp(300px,85vw,480px)}
+  .ho-tear-hero-media{clip-path:none}
+  .ho-half .ho-copy,.ho-tear-hero .ho-copy{max-width:none}
+}
