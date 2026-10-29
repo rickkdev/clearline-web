@@ -11,7 +11,7 @@ const outfit = Outfit({
 export const metadata: Metadata = {
   title: "Riccardo Lamanna – Fractional Head of AI",
   description:
-    "KI produktiv in Ihren Prozessen. Umgesetzt mit Fachbereich, IT und Kontrollfunktionen – für Banken und Finanzinstitute.",
+    "KI produktiv in Ihren Prozessen. Umgesetzt mit Fachbereich, IT und Kontrollfunktionen – für den deutschen Mittelstand.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

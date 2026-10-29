@@ -5,7 +5,6 @@ import { useEffect, useRef, useState } from "react";
 
 export function HeroVideo() {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [playing, setPlaying] = useState(false);
   const [failed, setFailed] = useState(false);
 
   useEffect(() => {
@@ -30,41 +29,25 @@ export function HeroVideo() {
       </svg>
       <Image className="hero-fallback" src="/hero-hq.webp" alt="Riccardo Lamanna" fill sizes="(max-width: 760px) 100vw, 50vw" />
       {!failed && (
-        <>
-          <video
-            ref={videoRef}
-            className="hero-video"
-            src="/video/working-sequence-option-4.mp4"
-            poster="/video/working-intro-poster.jpg"
-            width={1080}
-            height={1080}
-            muted
-            playsInline
-            preload="none"
-            aria-label="Riccardo Lamanna arbeitet an seinem Laptop"
-            onPlay={() => setPlaying(true)}
-            onPause={() => setPlaying(false)}
-            onEnded={() => {
-              const video = videoRef.current;
-              if (!video) return;
-              video.currentTime = 7;
-              void video.play().catch(() => {});
-            }}
-            onError={() => setFailed(true)}
-          />
-          <button
-            className="hero-video-toggle"
-            type="button"
-            onClick={() => {
-              const video = videoRef.current;
-              if (!video) return;
-              if (video.paused) void video.play().catch(() => {});
-              else video.pause();
-            }}
-          >
-            {playing ? "Video pausieren" : "Video abspielen"}
-          </button>
-        </>
+        <video
+          ref={videoRef}
+          className="hero-video"
+          src="/video/working-sequence-option-4.mp4"
+          poster="/video/working-intro-poster.jpg"
+          width={1080}
+          height={1080}
+          muted
+          playsInline
+          preload="none"
+          aria-label="Riccardo Lamanna arbeitet an seinem Laptop"
+          onEnded={() => {
+            const video = videoRef.current;
+            if (!video) return;
+            video.currentTime = 7;
+            void video.play().catch(() => {});
+          }}
+          onError={() => setFailed(true)}
+        />
       )}
     </div>
   );

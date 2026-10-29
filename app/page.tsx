@@ -56,7 +56,7 @@ export default function Home() {
         <HeroVideo />
         <div className="w">
           <div className="hero-text">
-            <div className="tag">Banken &amp; Finanzinstitute</div>
+            <div className="tag">KI für den deutschen Mittelstand</div>
             <h1>
               Mehr Zeit für die Arbeit, <em>die wirklich zählt.</em>
             </h1>

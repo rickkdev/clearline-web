@@ -21,9 +21,6 @@ nav .w{display:flex;align-items:center;justify-content:space-between;height:68px
 .hero-clip-defs{position:absolute}
 .hero-fallback{object-fit:cover;object-position:100% 20%;clip-path:url(#hero-teardrop)}
 .hero-video{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover;clip-path:url(#hero-teardrop)}
-.hero-video-toggle{position:absolute;right:20%;bottom:8px;z-index:3;border:1px solid rgba(255,255,255,.5);border-radius:4px;background:rgba(20,25,23,.8);color:#fff;padding:10px 14px;min-height:44px;font:inherit;font-size:14px;cursor:pointer}
-.hero-video-toggle:hover{background:#202724}
-.hero-video-toggle:focus-visible{outline:3px solid var(--acc);outline-offset:3px}
 .hero .w{position:relative;z-index:2;width:100%;padding-top:56px;padding-bottom:56px;pointer-events:none}
 .hero-text{pointer-events:auto}
 .hero-text{max-width:560px;display:flex;flex-direction:column;gap:24px}
@@ -118,7 +115,6 @@ footer a{color:var(--mute)}
  .nl{display:none}
  .hero{display:block;min-height:0;background:#fff}.hero-media{position:relative;inset:auto;width:100%;height:clamp(300px,85vw,480px)}
  .hero-video,.hero-fallback{clip-path:none}
- .hero-video-toggle{right:20px;bottom:20px}
  .hero .w{padding-top:28px;padding-bottom:40px}.hero-text{gap:16px}
  .brand span{display:block;margin-left:0;font-size:13px;line-height:1.2}
  .checks li{align-items:flex-start}.checks svg{margin-top:4px}
