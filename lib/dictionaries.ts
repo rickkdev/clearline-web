@@ -92,7 +92,7 @@ const de = {
       ],
     },
     contact: {
-      title: "Lassen Sie uns sprechen, wie wir zusammenarbeiten können.",
+      title: "Lassen Sie uns darüber sprechen, wie wir zusammenarbeiten können.",
       intro: "In 30 Minuten klären wir, wo KI Ihr Team entlasten kann und welcher nächste Schritt sinnvoll ist. Wählen Sie direkt einen passenden Termin.",
       cta: "30-minütiges Gespräch buchen",
     },
