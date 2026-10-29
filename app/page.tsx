@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { HeroVideo } from "./hero-video";
 import { BookingLink } from "./calendly";
+import { SpeakingGallery } from "./speaking-gallery";
 import { Swirl } from "./swirl";
 import { Timeline } from "./timeline";
 
@@ -153,16 +154,7 @@ export default function Home() {
           <h2 id="speaking-title">Gefragter KI-Experte auf Konferenzen, in Politik und Praxis.</h2>
           <div className="speaking-grid">
             <div>
-              <figure className="speaking-photo">
-                <Image
-                  src="/speaking/ai-politik-berlin.jpg"
-                  alt="Riccardo Lamanna mit deutschen Politikern und Veranstaltern bei AI Agents Berlin"
-                  width={1600}
-                  height={900}
-                  sizes="(max-width: 760px) 100vw, 480px"
-                />
-                <figcaption>KI, Agents und die Berlin-Wahl · AI Agents Berlin</figcaption>
-              </figure>
+              <SpeakingGallery />
               <Link className="lnk speaking-link" href="/speaking">
                 Vorträge und Auftritte ansehen →
               </Link>
