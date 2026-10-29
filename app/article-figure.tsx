@@ -21,6 +21,8 @@ function Artwork({ artwork }: { artwork: ArticleVisual["artwork"] }) {
       return <><circle cx="553" cy="110" r="59" fill="#F18A00" /><path d="m413 148 115 24v171l-115-28zm115 24 115-24v167l-115 28z" fill="#F6F6F6" /><path d="M435 193l68 14m-68 17 68 14m-68 17 68 14m80-56 68-14m-68 31 68-14m-68 31 68-14" stroke="#7DB6D6" strokeWidth="8" /><path d="M528 171v173" stroke="#202724" strokeWidth="8" /></>;
     case "access":
       return <><path d="M421 333V204a112 112 0 0 1 224 0v129" fill="none" stroke="#F6F6F6" strokeWidth="20" /><path d="M433 259h118" fill="none" stroke="#7DB6D6" strokeWidth="12" /><path d="M548 259h95" fill="none" stroke="#F18A00" strokeWidth="12" strokeDasharray="10 14" /><path d="M563 226v67" stroke="#F18A00" strokeWidth="14" /><circle cx="445" cy="259" r="17" fill="#7DB6D6" /><circle cx="647" cy="259" r="17" fill="#F18A00" /></>;
+    case "literacy":
+      return <><circle cx="590" cy="118" r="62" fill="#7DB6D6" /><path d="M420 96h180v240H420z" fill="#F6F6F6" /><path d="M446 140h20v20h-20zm0 50h20v20h-20zm0 50h20v20h-20z" fill="#202724" /><path d="m449 150 6 6 10-12m-16 56 6 6 10-12m-16 56 6 6 10-12" fill="none" stroke="#F18A00" strokeWidth="5" strokeLinecap="round" /><path d="M484 150h88m-88 50h72m-72 50h80" stroke="#7DB6D6" strokeWidth="9" /><circle cx="600" cy="318" r="44" fill="#F18A00" /><path d="m582 318 13 13 25-29" fill="none" stroke="#F6F6F6" strokeWidth="9" strokeLinecap="round" /></>;
   }
 }
 

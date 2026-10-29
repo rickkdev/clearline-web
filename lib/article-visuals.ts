@@ -1,7 +1,7 @@
 import type { Locale } from "./i18n";
 
 type VisualText = { title: string; caption: string; alt: string };
-type Artwork = "civic" | "library" | "loop" | "workspace" | "isolation" | "browser" | "server" | "knowledge" | "access";
+type Artwork = "civic" | "library" | "loop" | "workspace" | "isolation" | "browser" | "server" | "knowledge" | "access" | "literacy";
 
 export type ArticleVisual = {
   id: string;
@@ -52,6 +52,20 @@ export const ARTICLE_VISUALS = {
     { id: "hermes-guardrails", artwork: "access", afterHeadingIndex: 9, text: {
       de: { title: "Vor Freigabe gezielt gegenprüfen", caption: "Fachliche Antworten, Zugriffsgrenzen und Schreibaktionen brauchen eigene Gegenproben.", alt: "Eine belegte Anfrage passiert einen sicheren Zugang, während eine nicht erlaubte Schreibaktion gestoppt wird." },
       en: { title: "Counter-check before release", caption: "Domain answers, access boundaries and write actions each need their own counter-checks.", alt: "A source-backed request passes a secure gateway while an unapproved write action is stopped." },
+    } },
+  ],
+  "ki-kompetenz-schulung-ai-act": [
+    { id: "literacy-cover", artwork: "literacy", cover: { eyebrow: { de: "COMPLIANCE", en: "COMPLIANCE" }, hook: { de: "Schulen. Belegen.", en: "Train. Document." }, label: { de: "Art. 4 AI Act · KI-Schulung", en: "Art. 4 AI Act · AI training" } }, text: {
+      de: { title: "KI-Kompetenz nach Art. 4 AI Act", caption: "Eine Schulung mit den eigenen Werkzeugen und eine saubere Dokumentation erfüllen die Pflicht und stärken das Team.", alt: "Ein Schulungsnachweis mit abgehakten Themen und einem Siegel." },
+      en: { title: "AI literacy under Article 4 of the AI Act", caption: "Training with your own tools and clean documentation meet the obligation and strengthen the team.", alt: "A training record with checked-off topics and a seal." },
+    } },
+    { id: "literacy-record", artwork: "knowledge", afterHeadingIndex: 4, text: {
+      de: { title: "Die Maßnahme festhalten", caption: "Teilnehmerliste, Unterlagen und KI-Richtlinie belegen, was das Unternehmen getan hat.", alt: "Ein aufgeschlagenes Dokument mit Zeilen für Inhalte und Nachweise." },
+      en: { title: "Record the measure", caption: "Attendance list, materials and AI policy show what the company has done.", alt: "An open document with lines for content and evidence." },
+    } },
+    { id: "literacy-workshop", artwork: "library", afterHeadingIndex: 6, text: {
+      de: { title: "Ein Workshop im eigenen Unternehmen", caption: "Gemeinsame Grundlagen für alle, Vertiefung nach Rollen und Übungen mit echten Aufgaben.", alt: "Bücherregal und Lernmaterialien stehen für ein strukturiertes Schulungsprogramm." },
+      en: { title: "A workshop in your own company", caption: "Shared basics for everyone, in-depth sessions by role and exercises with real tasks.", alt: "A bookshelf and learning materials stand for a structured training programme." },
     } },
   ],
 } as const satisfies Record<string, readonly ArticleVisual[]>;

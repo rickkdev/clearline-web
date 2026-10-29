@@ -78,7 +78,7 @@ Für Junikom habe ich dazu einen Workshop gehalten. Er deckte diese Themen ab:
 | Verantwortung | Menschliche Prüfung, Freigaben und interne Regeln für den KI-Einsatz |
 | Praxis | Übungen mit den Werkzeugen, die das Team tatsächlich nutzt |
 
-Die Inhalte waren nach Rollen gewichtet. Entwickler brauchen mehr zu Sicherheit und Agenten, Vertrieb und Verwaltung mehr zu Datenschutz und dem Prüfen von Ergebnissen. Die Teilnahme und die Inhalte sind dokumentiert, damit Junikom die Maßnahme belegen kann.
+Die Inhalte waren nach Rollen gewichtet. Entwickler brauchen mehr zu Sicherheit und Agenten, Vertrieb und Verwaltung mehr zu Datenschutz und dem Prüfen von Ergebnissen. Die Teilnahme und die Inhalte sind dokumentiert, damit Junikom die Maßnahme belegen kann. Wie eine solche Schulung aufgebaut ist und was Art. 4 genau verlangt, beschreibe ich im Artikel [KI-Kompetenz nach Art. 4 AI Act](/blog/ki-kompetenz-schulung-ai-act).
 
 ## Ergebnis und nächste Schritte
 

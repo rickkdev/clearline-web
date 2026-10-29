@@ -78,7 +78,7 @@ For Junikom, I ran a workshop on this. It covered these topics:
 | Accountability | Human review, approvals, and internal rules for using AI |
 | Practice | Exercises with the tools the team actually uses |
 
-The content was weighted by role. Developers need more on security and agents, while sales and administration need more on data protection and checking results. Attendance and content are documented so Junikom can demonstrate the measure.
+The content was weighted by role. Developers need more on security and agents, while sales and administration need more on data protection and checking results. Attendance and content are documented so Junikom can demonstrate the measure. I describe how such a training is structured and what Article 4 requires in [AI literacy under Article 4 of the AI Act](/en/blog/ki-kompetenz-schulung-ai-act).
 
 ## Results and next steps
 

@@ -63,6 +63,25 @@ const ARTICLE_SOURCES = [
       },
     },
   },
+  {
+    slug: "ki-kompetenz-schulung-ai-act",
+    publishedAt: "2026-10-27",
+    updatedAt: "2026-10-27",
+    text: {
+      de: {
+        title: "KI-Kompetenz nach Art. 4 AI Act: Schulung und Workshop für Unternehmen",
+        description: "KI-Schulung für Mitarbeitende nach Art. 4 AI Act: Was die Pflicht zur KI-Kompetenz verlangt, welche Inhalte eine Schulung braucht und wie Sie sie dokumentieren.",
+        category: "Compliance",
+        summary: "Was Art. 4 AI Act nach dem Digital Omnibus verlangt und wie ein Workshop zur KI-Kompetenz mit Nachweis für Ihr Team aussieht.",
+      },
+      en: {
+        title: "AI literacy under Article 4 of the AI Act: training and workshops for companies",
+        description: "AI literacy training for employees under Article 4 of the AI Act: what the obligation requires, what a training should cover and how to document it.",
+        category: "Compliance",
+        summary: "What Article 4 of the AI Act requires after the Digital Omnibus and what an AI literacy workshop with documentation looks like for your team.",
+      },
+    },
+  },
 ] satisfies { slug: ArticleSlug; publishedAt: string; updatedAt: string; text: Record<Locale, ArticleText> }[];
 
 export type Article = Omit<(typeof ARTICLE_SOURCES)[number], "text"> & ArticleText;
