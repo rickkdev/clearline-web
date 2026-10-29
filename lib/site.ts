@@ -29,7 +29,7 @@ export function pageMetadata(locale: Locale, title: string, description: string,
     title,
     description,
     alternates: { canonical: url, languages: languageAlternates(path) },
-    openGraph: { title, description, url, siteName: SITE.name, locale: LOCALE_TAGS[locale].openGraph, type: "website", images: [{ url: image, width: 1200, height: 630, alt: getDictionary(locale).site.title }] },
+    openGraph: { title, description, url, siteName: SITE.name, locale: LOCALE_TAGS[locale].openGraph, type: "website", images: [{ url: image, type: "image/png", width: 1200, height: 630, alt: getDictionary(locale).site.title }] },
     twitter: { card: "summary_large_image", title, description, images: [image] },
   };
 }

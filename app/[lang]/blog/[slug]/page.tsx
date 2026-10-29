@@ -32,7 +32,7 @@ export async function generateMetadata({ params }: PageProps<"/[lang]/blog/[slug
   return {
     ...metadata,
     alternates: { ...metadata.alternates, types: { "text/markdown": `${url}/index.md` } },
-    openGraph: { ...metadata.openGraph, type: "article", publishedTime: article.publishedAt, modifiedTime: article.updatedAt, authors: [SITE.origin], section: article.category, images: [{ url: `${url}/opengraph-image`, width: 1200, height: 630, alt: article.title }] },
+    openGraph: { ...metadata.openGraph, type: "article", publishedTime: article.publishedAt, modifiedTime: article.updatedAt, authors: [SITE.origin], section: article.category, images: [{ url: `${url}/opengraph-image`, type: "image/png", width: 1200, height: 630, alt: article.title }] },
     twitter: { card: "summary_large_image", title: article.title, description: article.description, images: [`${url}/opengraph-image`] },
   };
 }
