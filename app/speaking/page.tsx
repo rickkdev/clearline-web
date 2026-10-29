@@ -2,10 +2,11 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { BookingLink } from "../calendly";
+import { pageMetadata, SITE } from "../../lib/site";
+import { StructuredData } from "../structured-data";
 
 export const metadata: Metadata = {
-  title: "Vorträge und Auftritte – Riccardo Lamanna",
-  description: "Konferenzen, Panels und KI-Meetups mit Riccardo Lamanna – von Berlin und Tokio bis Davos.",
+  ...pageMetadata("Vorträge und Auftritte", "Rick (Riccardo) Lamanna als Speaker und Moderator zu KI und AI Agents. Auftritte in Berlin, Tokio und Davos sowie eigene KI-Meetups.", "/speaking"),
 };
 
 const TALKS = [
@@ -70,11 +71,13 @@ const TALKS = [
 export default function SpeakingPage() {
   return (
     <>
+      <StructuredData data={{ "@context": "https://schema.org", "@type": "CollectionPage", "@id": `${SITE.origin}/speaking#webpage`, url: `${SITE.origin}/speaking`, name: "Vorträge und Auftritte von Rick Lamanna", inLanguage: "de-DE", about: { "@id": `${SITE.origin}/#person` }, isPartOf: { "@id": `${SITE.origin}/#website` } }} />
       <nav>
         <div className="w">
           <Link className="brand" href="/">
             Riccardo Lamanna<span>Fractional Head of AI</span>
           </Link>
+          <div className="nl"><Link href="/blog">Praxiswissen</Link><BookingLink>Gespräch buchen</BookingLink></div>
         </div>
       </nav>
       <main className="speaking-page w">

@@ -3,8 +3,16 @@ import Link from "next/link";
 import { HeroVideo } from "./hero-video";
 import { BookingLink } from "./calendly";
 import { SpeakingGallery } from "./speaking-gallery";
+import { pageMetadata, SITE } from "../lib/site";
+import { StructuredData } from "./structured-data";
+import { ARTICLES } from "../lib/articles";
 import { Swirl } from "./swirl";
 import { Timeline } from "./timeline";
+
+export const metadata = {
+  ...pageMetadata(SITE.title, SITE.description, "/"),
+  title: { absolute: SITE.title },
+};
 
 const REFERENCES = [
   { name: "Junikom", logo: "/logos/junikom.svg" },
@@ -37,6 +45,13 @@ function Check() {
 export default function Home() {
   return (
     <>
+      <StructuredData data={{
+        "@context": "https://schema.org",
+        "@graph": [
+          { "@type": "ProfilePage", "@id": `${SITE.origin}/#webpage`, url: `${SITE.origin}/`, name: SITE.title, inLanguage: "de-DE", isPartOf: { "@id": `${SITE.origin}/#website` }, mainEntity: { "@id": `${SITE.origin}/#person` } },
+          { "@type": "Service", "@id": `${SITE.origin}/#service`, name: "Fractional Head of AI und Applied AI Engineering", description: SITE.biography, provider: { "@id": `${SITE.origin}/#person` }, areaServed: { "@type": "Country", name: "Deutschland" }, serviceType: ["Applied AI Engineering", "KI-Integration", "Fractional Head of AI"], url: `${SITE.origin}/#kontakt` },
+        ],
+      }} />
       <nav>
         <div className="w">
           <a className="brand" href="#">
@@ -47,6 +62,7 @@ export default function Home() {
             <a href="#einsatz">Einsatzfelder</a>
             <a href="#ablauf">Ablauf</a>
             <a href="#betrieb">Sicherer Betrieb</a>
+            <Link href="/blog">Praxiswissen</Link>
             <BookingLink>Gespräch buchen</BookingLink>
           </div>
         </div>
@@ -60,7 +76,8 @@ export default function Home() {
             <h1>
               Mehr Zeit für die Arbeit, <em>die wirklich zählt.</em>
             </h1>
-            <p className="sub">Ihre KI-Einführung für 2026.</p>
+            <p className="sub">Applied AI Engineering für Ihr Unternehmen.</p>
+            <p className="hero-byline">Mit Rick Lamanna · Freelancer &amp; Fractional Head of AI</p>
             <ul className="checks">
               <li>
                 <Check />
@@ -112,6 +129,14 @@ export default function Home() {
               </ul>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section id="ueber-mich" className="about">
+        <div className="in">
+          <h2>Rick Lamanna. KI-Umsetzung direkt in Ihrem Team.</h2>
+          <p className="intro">{SITE.biography}</p>
+          <p>Als Freelancer verbinde ich technische Umsetzung mit Verantwortung für das Ergebnis. Die Werkzeuge wähle ich passend zu Ihren Abläufen, Ihren Daten und Ihrem Team: von Coding Agents über Wissensassistenten bis zu selbst gehosteten Modellen auf eigenen oder EU-Servern.</p>
         </div>
       </section>
 
@@ -177,6 +202,23 @@ export default function Home() {
         </div>
       </section>
 
+      <section id="praxiswissen" className="knowledge">
+        <div className="in">
+          <h2>KI-Praxiswissen für Ihr Unternehmen.</h2>
+          <p className="intro">Konkrete Anleitungen für Wissensassistenten und Entwicklungsteams. Mit Quellen, technischen Entscheidungen und Prüfungen für den Alltag.</p>
+          <div className="article-cards">
+            {ARTICLES.map((article) => (
+              <article className="article-card" key={article.slug}>
+                <p className="tag">{article.category}</p>
+                <h3><Link href={`/blog/${article.slug}`}>{article.title}</Link></h3>
+                <p>{article.summary}</p>
+                <Link className="lnk" href={`/blog/${article.slug}`}>Artikel lesen →</Link>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section id="kontakt" className="contact">
         <div className="in">
           <div className="booking-heading">
@@ -191,6 +233,7 @@ export default function Home() {
         <div className="w">
           <span>© 2026 Riccardo Lamanna · Fractional Head of AI</span>
           <span>
+            <Link href="/blog">Praxiswissen</Link> · {" "}
             <BookingLink>Gespräch buchen</BookingLink>
           </span>
         </div>
