@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Outfit } from "next/font/google";
 import "./globals.css";
+import { CalendlyWidget } from "./calendly";
 
 const outfit = Outfit({
   variable: "--font-outfit",
@@ -17,7 +18,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="de" className={outfit.variable}>
-      <body>{children}</body>
+      <head>
+        <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" />
+      </head>
+      <body>{children}<CalendlyWidget /></body>
     </html>
   );
 }

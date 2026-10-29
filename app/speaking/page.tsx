@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { BookingLink } from "../calendly";
 
 export const metadata: Metadata = {
   title: "Vorträge und Auftritte – Riccardo Lamanna",
@@ -106,13 +107,13 @@ export default function SpeakingPage() {
         <div className="speaking-invite">
           <h2>KI auf Ihrer Agenda?</h2>
           <p>Für einen Vortrag, ein Panel oder die Umsetzung in Ihrem Team.</p>
-          <Link className="btn" href="/#kontakt">Gespräch buchen</Link>
+          <BookingLink className="btn">Gespräch buchen</BookingLink>
         </div>
       </main>
       <footer>
         <div className="w">
           <span>© 2026 Riccardo Lamanna · Fractional Head of AI</span>
-          <Link href="/#kontakt">Gespräch buchen</Link>
+          <BookingLink>Gespräch buchen</BookingLink>
         </div>
       </footer>
     </>

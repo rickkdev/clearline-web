@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { HeroVideo } from "./hero-video";
+import { BookingLink } from "./calendly";
 import { Swirl } from "./swirl";
 import { Timeline } from "./timeline";
 
@@ -45,7 +46,7 @@ export default function Home() {
             <a href="#einsatz">Einsatzfelder</a>
             <a href="#ablauf">Ablauf</a>
             <a href="#betrieb">Sicherer Betrieb</a>
-            <a href="#kontakt">Gespräch buchen</a>
+            <BookingLink>Gespräch buchen</BookingLink>
           </div>
         </div>
       </nav>
@@ -70,7 +71,7 @@ export default function Home() {
               </li>
             </ul>
             <div className="cta">
-              <a className="btn" href="#kontakt">Gespräch vereinbaren</a>
+              <BookingLink className="btn">Gespräch vereinbaren</BookingLink>
               <a className="lnk" href="#einsatz">Einsatzfelder ansehen →</a>
             </div>
           </div>
@@ -190,15 +191,7 @@ export default function Home() {
             <h2>Lassen Sie uns über Ihr KI-Vorhaben sprechen.</h2>
             <p className="intro">In 30 Minuten klären wir, wo KI Ihr Team entlasten kann und welcher nächste Schritt sinnvoll ist. Wählen Sie direkt einen passenden Termin.</p>
           </div>
-          <iframe
-            className="booking-calendar"
-            src="https://calendly.com/mail-rick/30min?primary_color=f18a00&text_color=3e4543"
-            title="30-minütiges Gespräch mit Riccardo Lamanna buchen"
-            loading="lazy"
-          />
-          <a className="lnk" href="https://calendly.com/mail-rick/30min" target="_blank" rel="noopener noreferrer">
-            Termin in neuem Tab buchen ↗
-          </a>
+          <div><BookingLink className="btn">30-minütiges Gespräch buchen</BookingLink></div>
         </div>
       </section>
 
@@ -206,7 +199,7 @@ export default function Home() {
         <div className="w">
           <span>© 2026 Riccardo Lamanna · Fractional Head of AI</span>
           <span>
-            <a href="#kontakt">Gespräch buchen</a>
+            <BookingLink>Gespräch buchen</BookingLink>
           </span>
         </div>
       </footer>
