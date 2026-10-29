@@ -10,10 +10,11 @@ const ARTICLE_SOURCES = [
     slug: "case-study-junikom",
     publishedAt: "2026-10-29",
     updatedAt: "2026-10-29",
+    noindex: true,
     text: {
       de: {
         title: "Case Study Junikom: Von Coding Agents bis CRM – KI im ganzen Unternehmen",
-        description: "Wie die Entwicklungsteams von Junikom mit Coding Agents, MCP, Playwright-Verifikation, Open-Source-Pentests und einer KI-Schulung nach Art. 4 AI Act schneller liefern.",
+        description: "Wie Junikom den Weg vom Kundenproblem bis zur geprüften Änderung mit Coding Agents, Projektwissen im Repository, Playwright-Verifikation, Open-Source-Pentests und einer KI-Schulung nach Art. 4 AI Act neu aufstellt.",
         category: "Case Study",
         summary: "Drei Monate Projekt, verlängert um weitere Monate: Entwicklungsteams, Sicherheit, Salesforce und KI-Kompetenz bei einem Softwareanbieter für Kommunen.",
       },
@@ -82,14 +83,19 @@ const ARTICLE_SOURCES = [
       },
     },
   },
-] satisfies { slug: ArticleSlug; publishedAt: string; updatedAt: string; text: Record<Locale, ArticleText> }[];
+] satisfies { slug: ArticleSlug; publishedAt: string; updatedAt: string; noindex?: true; text: Record<Locale, ArticleText> }[];
 
-export type Article = Omit<(typeof ARTICLE_SOURCES)[number], "text"> & ArticleText;
+// Hidden from search engines, listings, sitemaps and LLM indexes. The URL still serves the page.
+export type Article = Omit<(typeof ARTICLE_SOURCES)[number], "text"> & ArticleText & { noindex?: true };
 
 export const ARTICLE_SLUGS = ARTICLE_SOURCES.map(({ slug }) => slug);
 
 export function getArticles(locale: Locale): Article[] {
   return ARTICLE_SOURCES.map(({ text, ...article }) => ({ ...article, ...text[locale] }));
+}
+
+export function indexableArticles(locale: Locale): Article[] {
+  return getArticles(locale).filter((article) => !article.noindex);
 }
 
 export function findArticle(locale: Locale, slug: string) {

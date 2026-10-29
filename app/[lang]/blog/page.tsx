@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { getArticles } from "../../../lib/articles";
+import { indexableArticles } from "../../../lib/articles";
 import { articleVisuals } from "../../../lib/article-visuals";
 import { getDictionary } from "../../../lib/dictionaries";
 import { LOCALE_TAGS, localePath } from "../../../lib/i18n";
@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: PageProps<"/[lang]/blog">): P
 export default async function BlogPage({ params }: PageProps<"/[lang]/blog">) {
   const lang = await localeParam(params);
   const { blog, nav, footer } = getDictionary(lang);
-  const articles = getArticles(lang);
+  const articles = indexableArticles(lang);
   const url = absoluteUrl(lang, "/blog");
   const articlePath = (slug: string) => localePath(lang, `/blog/${slug}`);
 
