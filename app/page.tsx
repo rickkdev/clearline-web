@@ -4,8 +4,6 @@ import { HeroVideo } from "./hero-video";
 import { Swirl } from "./swirl";
 import { Timeline } from "./timeline";
 
-const EMAIL = "mail@riccardolamanna.de";
-
 const REFERENCES = [
   { name: "Junikom", logo: "/logos/junikom.svg" },
   { name: "flexC", logo: "/logos/flexc.png" },
@@ -47,7 +45,7 @@ export default function Home() {
             <a href="#einsatz">Einsatzfelder</a>
             <a href="#ablauf">Ablauf</a>
             <a href="#betrieb">Sicherer Betrieb</a>
-            <a href="#kontakt">Kontakt</a>
+            <a href="#kontakt">Gespräch buchen</a>
           </div>
         </div>
       </nav>
@@ -188,18 +186,19 @@ export default function Home() {
 
       <section id="kontakt" className="contact">
         <div className="in">
-          <div className="card">
-            <div>
-              <h3>Direkt in Ihrem Team.</h3>
-              <p style={{ margin: "6px 0 0" }}>Für ein Vorhaben oder laufend. Beginnen Sie mit einem Gespräch.</p>
-            </div>
-            <a
-              className="btn"
-              href={`mailto:${EMAIL}?subject=${encodeURIComponent("KI-Einführung – Erstgespräch")}`}
-            >
-              {EMAIL}
-            </a>
+          <div className="booking-heading">
+            <h2>Lassen Sie uns über Ihr KI-Vorhaben sprechen.</h2>
+            <p className="intro">In 30 Minuten klären wir, wo KI Ihr Team entlasten kann und welcher nächste Schritt sinnvoll ist. Wählen Sie direkt einen passenden Termin.</p>
           </div>
+          <iframe
+            className="booking-calendar"
+            src="https://calendly.com/mail-rick/30min?primary_color=f18a00&text_color=3e4543"
+            title="30-minütiges Gespräch mit Riccardo Lamanna buchen"
+            loading="lazy"
+          />
+          <a className="lnk" href="https://calendly.com/mail-rick/30min" target="_blank" rel="noopener noreferrer">
+            Termin in neuem Tab buchen ↗
+          </a>
         </div>
       </section>
 
@@ -207,7 +206,7 @@ export default function Home() {
         <div className="w">
           <span>© 2026 Riccardo Lamanna · Fractional Head of AI</span>
           <span>
-            <a href={`mailto:${EMAIL}`}>{EMAIL}</a>
+            <a href="#kontakt">Gespräch buchen</a>
           </span>
         </div>
       </footer>

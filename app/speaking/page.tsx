@@ -106,13 +106,13 @@ export default function SpeakingPage() {
         <div className="speaking-invite">
           <h2>KI auf Ihrer Agenda?</h2>
           <p>Für einen Vortrag, ein Panel oder die Umsetzung in Ihrem Team.</p>
-          <a className="btn" href="mailto:mail@riccardolamanna.de">Gespräch vereinbaren</a>
+          <Link className="btn" href="/#kontakt">Gespräch buchen</Link>
         </div>
       </main>
       <footer>
         <div className="w">
           <span>© 2026 Riccardo Lamanna · Fractional Head of AI</span>
-          <a href="mailto:mail@riccardolamanna.de">mail@riccardolamanna.de</a>
+          <Link href="/#kontakt">Gespräch buchen</Link>
         </div>
       </footer>
     </>
