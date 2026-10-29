@@ -12,13 +12,13 @@ const ARTICLE_SOURCES = [
     updatedAt: "2026-10-29",
     text: {
       de: {
-        title: "Case Study Junikom: Schneller und sicherer entwickeln mit KI",
+        title: "Case Study Junikom: Von Coding Agents bis CRM – KI im ganzen Unternehmen",
         description: "Wie die Entwicklungsteams von Junikom mit Coding Agents, MCP, Playwright-Verifikation, Open-Source-Pentests und einer KI-Schulung nach Art. 4 AI Act schneller liefern.",
         category: "Case Study",
         summary: "Drei Monate Projekt, verlängert um weitere Monate: Entwicklungsteams, Sicherheit, Salesforce und KI-Kompetenz bei einem Softwareanbieter für Kommunen.",
       },
       en: {
-        title: "Junikom case study: Shipping faster and more securely with AI",
+        title: "Junikom case study: From coding agents to CRM – AI across the whole company",
         description: "How Junikom's engineering teams ship faster with coding agents, MCP, Playwright verification, open-source pentests and AI literacy training under Article 4 of the AI Act.",
         category: "Case Study",
         summary: "A three-month engagement, extended by further months: engineering teams, security, Salesforce and AI literacy at a software vendor for municipalities.",

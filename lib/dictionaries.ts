@@ -38,7 +38,7 @@ const de = {
     },
     caseStudy: {
       tag: "Case Study",
-      title: "Junikom: Schneller und sicherer entwickeln mit KI.",
+      title: "Junikom: Von Coding Agents bis CRM. KI im ganzen Unternehmen.",
       intro: "Ein Softwareanbieter für Kommunen, dessen Entwicklungsteams KI kaum nutzten. Gemeinsam haben wir Repositories für Coding Agents eingerichtet, die Teams im Pair Coding geschult, Ergebnisse mit Playwright prüfbar gemacht und Pentests mit Open-Source-Modellen eingeführt.",
       facts: [
         { value: "3 Monate", text: "geplante Laufzeit, danach verlängert" },
@@ -179,7 +179,7 @@ const en: Dictionary = {
     },
     caseStudy: {
       tag: "Case Study",
-      title: "Junikom: Shipping faster and more securely with AI.",
+      title: "Junikom: From coding agents to CRM. AI across the whole company.",
       intro: "A software vendor for municipalities whose engineering teams barely used AI. Together we set up repositories for coding agents, trained the teams through pair coding, made results verifiable with Playwright, and introduced penetration testing with open-source models.",
       facts: [
         { value: "3 months", text: "planned engagement, then extended" },
