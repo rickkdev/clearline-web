@@ -6,7 +6,7 @@ import { LOCALE_TAGS, localePath } from "../../lib/i18n";
 import { localeParam } from "../../lib/locale-param";
 import { absoluteUrl, pageMetadata, SITE } from "../../lib/site";
 import { BookingLink } from "../calendly";
-import { HeroVideo } from "../hero-video";
+import { HeroImage } from "../hero-image";
 import { SiteNav } from "../site-nav";
 import { SpeakingGallery } from "../speaking-gallery";
 import { StructuredData } from "../structured-data";
@@ -53,7 +53,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
       <SiteNav locale={lang} path="/" />
 
       <section className="hero">
-        <HeroVideo label={home.hero.videoLabel} />
+        <HeroImage alt={home.hero.imageAlt} />
         <div className="w">
           <div className="hero-text">
             <div className="tag">{home.hero.tag}</div>

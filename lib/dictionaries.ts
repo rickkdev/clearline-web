@@ -26,7 +26,7 @@ const de = {
       checks: ["Umgesetzt mit Fachbereich, IT und Kontrollfunktionen", "Vom Prozess zum produktiven Einsatz in 4–6 Wochen"],
       cta: "Gespräch vereinbaren",
       fieldsLink: "Einsatzfelder ansehen →",
-      videoLabel: "Riccardo Lamanna arbeitet an seinem Laptop",
+      imageAlt: "Riccardo Lamanna skizziert im Workshop einen KI-Agenten-Workflow für den Kundenservice am Whiteboard",
     },
     results: {
       title: "Ergebnisse aus Kundenprojekten",
@@ -167,7 +167,7 @@ const en: Dictionary = {
       checks: ["Delivered together with business teams, IT and compliance", "From process to production in 4 to 6 weeks"],
       cta: "Schedule a call",
       fieldsLink: "See where AI helps →",
-      videoLabel: "Riccardo Lamanna working on his laptop",
+      imageAlt: "Riccardo Lamanna sketching an AI agent workflow for customer support on a whiteboard in a workshop",
     },
     results: {
       title: "Results from client projects",
