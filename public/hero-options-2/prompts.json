@@ -1,0 +1,152 @@
+[
+  {
+    "number": 1,
+    "id": "paper",
+    "prompt": "Use case: stylized-concept. Create one landscape 3:2 hero illustration for a German applied AI engineering consultant helping small businesses get time back. Layered hand-cut paper sculpture of a winding orderly orange ribbon flowing through ivory architectural arches and small teal paper trees, turning scattered paper sheets into an ordered path. Tactile paper edges, sophisticated editorial art direction, warm cream background, soft side light, no people, no text, no letters, no watermark. Full bleed artwork, not a website mockup.",
+    "tool": "Built-in image_gen"
+  },
+  {
+    "number": 2,
+    "id": "clay",
+    "prompt": "Use case: stylized-concept. Asset type: a new landscape 3:2 website hero artwork for an applied AI engineering consultant serving German small businesses. Handmade clay stop-motion miniature of a small tidy workshop, rounded terracotta conveyor moving cream envelopes into neat trays, sage green equipment, visible clay fingerprints, soft studio light. Full bleed artwork only. No website UI, no typography, no lettering, no watermark. Visually sophisticated and distinctive.",
+    "tool": "Built-in image_gen"
+  },
+  {
+    "number": 3,
+    "id": "risograph",
+    "prompt": "Use case: stylized-concept. Asset type: a new landscape 3:2 website hero artwork for an applied AI engineering consultant serving German small businesses. Two-color risograph print in vermilion and cobalt on warm uncoated cream paper: abstract sun above a staircase and orderly small paper sheets becoming birds. Grainy ink, misregistered edges, bold editorial geometry. Full bleed artwork only. No website UI, no typography, no lettering, no watermark. Visually sophisticated and distinctive.",
+    "tool": "Built-in image_gen"
+  },
+  {
+    "number": 4,
+    "id": "cyanotype",
+    "prompt": "Use case: stylized-concept. Asset type: a new landscape 3:2 website hero artwork for an applied AI engineering consultant serving German small businesses. Cyanotype sun print, intricate white architectural isometric workshop plan with flowing connected paths, botanical leaf silhouettes around edges, deep Prussian blue paper, authentic analog exposure marks, no writing. Full bleed artwork only. No website UI, no typography, no lettering, no watermark. Visually sophisticated and distinctive.",
+    "tool": "Built-in image_gen"
+  },
+  {
+    "number": 5,
+    "id": "bauhaus",
+    "prompt": "Use case: stylized-concept. Asset type: a new landscape 3:2 website hero artwork for an applied AI engineering consultant serving German small businesses. Bauhaus-inspired abstract composition of black bars, brick red circle, ochre semicircle and cobalt rectangular steps forming a purposeful bridge. Flat geometric screenprint with subtle paper grain, refined asymmetric Swiss poster composition, no typography. Full bleed artwork only. No website UI, no typography, no lettering, no watermark. Visually sophisticated and distinctive.",
+    "tool": "Built-in image_gen"
+  },
+  {
+    "number": 6,
+    "id": "watercolor",
+    "prompt": "Use case: stylized-concept. Asset type: a new landscape 3:2 website hero artwork for an applied AI engineering consultant serving German small businesses. Delicate architectural watercolor of a sunny small German atelier with open windows, a wooden desk, leafy courtyard and empty chair. Loose sage washes, burnt sienna touches, abundant white paper, elegant hand painted edges, no people. Full bleed artwork only. No website UI, no typography, no lettering, no watermark. Visually sophisticated and distinctive.",
+    "tool": "Built-in image_gen"
+  },
+  {
+    "number": 7,
+    "id": "noir",
+    "prompt": "Use case: stylized-concept. Asset type: a new landscape 3:2 website hero artwork for an applied AI engineering consultant serving German small businesses. Black and white fine art documentary photograph of a quiet precision engineering workshop, metal workbench and a single task light, strong window beams, tactile steel and wood, restrained film grain, high dynamic range, no people, no logos. Full bleed artwork only. No website UI, no typography, no lettering, no watermark. Visually sophisticated and distinctive.",
+    "tool": "Built-in image_gen"
+  },
+  {
+    "number": 8,
+    "id": "miniature",
+    "prompt": "Use case: stylized-concept. Asset type: a new landscape 3:2 website hero artwork for an applied AI engineering consultant serving German small businesses. Premium isometric miniature diorama of a small European manufacturing business, office connected to workshop and warehouse by a single orange path, tiny trees, warm white walls, sage roofs, tilt shift photography on pale sage seamless backdrop. Full bleed artwork only. No website UI, no typography, no lettering, no watermark. Visually sophisticated and distinctive.",
+    "tool": "Built-in image_gen"
+  },
+  {
+    "number": 9,
+    "id": "glass",
+    "prompt": "Use case: stylized-concept. Asset type: a new landscape 3:2 website hero artwork for an applied AI engineering consultant serving German small businesses. High-end 3D still life of translucent frosted glass arches and transparent connected glass channels, a single amber marble moving along the path, ice blue and pale lavender backdrop, caustic light patterns, elegant physical materials, no text. Full bleed artwork only. No website UI, no typography, no lettering, no watermark. Visually sophisticated and distinctive.",
+    "tool": "Built-in image_gen"
+  },
+  {
+    "number": 10,
+    "id": "woodcut",
+    "prompt": "Use case: stylized-concept. Asset type: a new landscape 3:2 website hero artwork for an applied AI engineering consultant serving German small businesses. Artisan linocut woodblock print of a bridge connecting a small workshop with an open sunlit garden, dark forest green ink and terracotta orange sun on ivory paper, bold carved hatch marks, limited palette, sophisticated editorial print. Full bleed artwork only. No website UI, no typography, no lettering, no watermark. Visually sophisticated and distinctive.",
+    "tool": "Built-in image_gen"
+  },
+  {
+    "number": 11,
+    "id": "collage",
+    "prompt": "Use case: stylized-concept. Asset type: a new landscape 3:2 website hero artwork for an applied AI engineering consultant serving German small businesses. Surreal editorial paper collage with archival black and white photograph of a stairway, cutout orange sun, blue graph paper, a giant hand placing one small wooden building block, deliberate torn paper edges and halftone textures, sophisticated magazine art. Full bleed artwork only. No website UI, no typography, no lettering, no watermark. Visually sophisticated and distinctive.",
+    "tool": "Built-in image_gen"
+  },
+  {
+    "number": 12,
+    "id": "botanical",
+    "prompt": "Use case: stylized-concept. Asset type: a new landscape 3:2 website hero artwork for an applied AI engineering consultant serving German small businesses. Detailed vintage botanical gouache illustration of a citrus branch trained along an elegant geometric wooden trellis, orange fruits and rich green leaves, ivory background, restrained natural history aesthetic with delicate shadows, no labels or lettering. Full bleed artwork only. No website UI, no typography, no lettering, no watermark. Visually sophisticated and distinctive.",
+    "tool": "Built-in image_gen"
+  },
+  {
+    "number": 13,
+    "id": "blueprint",
+    "prompt": "Use case: stylized-concept. Asset type: a new landscape 3:2 website hero artwork for an applied AI engineering consultant serving German small businesses. Precise architectural axonometric pencil and blue ink drawing of an open small factory with a connected office, white paper backdrop, one orange route through the building, refined engineering sketch, generous negative space, no labels, no dimensions. Full bleed artwork only. No website UI, no typography, no lettering, no watermark. Visually sophisticated and distinctive.",
+    "tool": "Built-in image_gen"
+  },
+  {
+    "number": 14,
+    "id": "sunlight",
+    "prompt": "Use case: stylized-concept. Asset type: a new landscape 3:2 website hero artwork for an applied AI engineering consultant serving German small businesses. Warm editorial film photograph of an empty contemporary German artisan workshop office at morning, warm sunlight on oak desk, open notebook and ceramic cup, plants, tall windows overlooking brick industrial courtyard. Authentic inviting understated, no people, no readable text. Full bleed artwork only. No website UI, no typography, no lettering, no watermark. Visually sophisticated and distinctive.",
+    "tool": "Built-in image_gen"
+  },
+  {
+    "number": 15,
+    "id": "thread",
+    "prompt": "Use case: stylized-concept. Asset type: a new landscape 3:2 website hero artwork for an applied AI engineering consultant serving German small businesses. Macro textile art photograph of neatly woven natural linen threads with one bold terracotta thread creating a continuous flowing path, cream wool and dark navy stitches, tactile fibers, raking side light, elegant abstract handmade composition. Full bleed artwork only. No website UI, no typography, no lettering, no watermark. Visually sophisticated and distinctive.",
+    "tool": "Built-in image_gen"
+  },
+  {
+    "number": 16,
+    "id": "ceramic",
+    "prompt": "Use case: stylized-concept. Asset type: a new landscape 3:2 website hero artwork for an applied AI engineering consultant serving German small businesses. Sculptural ceramic still life of interconnected handmade ivory porcelain and warm terracotta arches on sand colored stone pedestal, wabi sabi glaze, one olive branch, warm daylight, minimal art gallery photography, spacious elegant composition. Full bleed artwork only. No website UI, no typography, no lettering, no watermark. Visually sophisticated and distinctive.",
+    "tool": "Built-in image_gen"
+  },
+  {
+    "number": 17,
+    "id": "pixel",
+    "prompt": "Use case: stylized-concept. Asset type: a new landscape 3:2 website hero artwork for an applied AI engineering consultant serving German small businesses. Beautiful meticulously crafted pixel art scene of a cozy European small factory office with plants, orange conveyor connecting workstations and shelves, warm windows, deep navy shadows and amber lighting, 1990s high-quality isometric adventure game aesthetic, no characters or text. Full bleed artwork only. No website UI, no typography, no lettering, no watermark. Visually sophisticated and distinctive.",
+    "tool": "Built-in image_gen"
+  },
+  {
+    "number": 18,
+    "id": "ink",
+    "prompt": "Use case: stylized-concept. Asset type: a new landscape 3:2 website hero artwork for an applied AI engineering consultant serving German small businesses. Elegant black ink brush drawing on warm white washi paper of a single arched footbridge over a stream, a small workshop on the far bank and a solitary orange circle sun, large empty margins, expressive minimal ink wash, sophisticated editorial zen aesthetic. Full bleed artwork only. No website UI, no typography, no lettering, no watermark. Visually sophisticated and distinctive.",
+    "tool": "Built-in image_gen"
+  },
+  {
+    "number": 19,
+    "id": "topographic",
+    "prompt": "Use case: stylized-concept. Asset type: a new landscape 3:2 website hero artwork for an applied AI engineering consultant serving German small businesses. Sculptural topographic contour map made of stacked pale sage paper layers, a single orange path winding smoothly across a valley to a clear elevated plateau, overhead oblique macro photography, beautiful layered shadows, no labels. Full bleed artwork only. No website UI, no typography, no lettering, no watermark. Visually sophisticated and distinctive.",
+    "tool": "Built-in image_gen"
+  },
+  {
+    "number": 20,
+    "id": "prism",
+    "prompt": "Use case: stylized-concept. Asset type: a new landscape 3:2 website hero artwork for an applied AI engineering consultant serving German small businesses. Photorealistic optical glass prism on dark navy surface turning several soft scattered white light beams into one elegant straight warm orange beam, atmospheric optical studio photography, refined physically plausible glass refractions, uncluttered luxurious composition. Full bleed artwork only. No website UI, no typography, no lettering, no watermark. Visually sophisticated and distinctive.",
+    "tool": "Built-in image_gen"
+  },
+  {
+    "number": 21,
+    "id": "gouache",
+    "prompt": "Use case: stylized-concept. Asset type: a new landscape 3:2 website hero artwork for an applied AI engineering consultant serving German small businesses. Contemporary editorial gouache painting of three stylized fictional colleagues collaborating around an oak table in a small bright atelier, plants and open window, visible rich brushstrokes, terracotta mustard and sage palette, natural human warmth, no text, no photorealism. Full bleed artwork only. No website UI, no typography, no lettering, no watermark. Visually sophisticated and distinctive.",
+    "tool": "Built-in image_gen"
+  },
+  {
+    "number": 22,
+    "id": "concrete",
+    "prompt": "Use case: stylized-concept. Asset type: a new landscape 3:2 website hero artwork for an applied AI engineering consultant serving German small businesses. Fine art architectural photograph of sculptural concrete staircase and a bold terracotta doorway, brutalist geometry softened by warm afternoon sunlight and precise long shadows, stone surface textures, minimal monumental composition, no people. Full bleed artwork only. No website UI, no typography, no lettering, no watermark. Visually sophisticated and distinctive.",
+    "tool": "Built-in image_gen"
+  },
+  {
+    "number": 23,
+    "id": "aerial",
+    "prompt": "Use case: stylized-concept. Asset type: a new landscape 3:2 website hero artwork for an applied AI engineering consultant serving German small businesses. Cinematic aerial photograph of a beautiful small German industrial campus with red brick workshop, orderly warehouse, solar roofs and trees, morning mist and warm sun, believable Mittelstand scale, no large corporate megafactory, no readable text. Full bleed artwork only. No website UI, no typography, no lettering, no watermark. Visually sophisticated and distinctive.",
+    "tool": "Built-in image_gen"
+  },
+  {
+    "number": 24,
+    "id": "chalk",
+    "prompt": "Use case: stylized-concept. Asset type: a new landscape 3:2 website hero artwork for an applied AI engineering consultant serving German small businesses. Hand drawn white and pale peach chalk illustration on dark forest green chalkboard of an elegant connected system of small workshop buildings, envelopes and simple gear shapes, thoughtful clean sparse composition with fine chalk dust, absolutely no letters or words. Full bleed artwork only. No website UI, no typography, no lettering, no watermark. Visually sophisticated and distinctive.",
+    "tool": "Built-in image_gen"
+  },
+  {
+    "number": 25,
+    "id": "futurism",
+    "prompt": "Use case: stylized-concept. Asset type: a new landscape 3:2 website hero artwork for an applied AI engineering consultant serving German small businesses. Retrofuturist 1960s editorial airbrush painting of a small friendly European workshop with rounded orange and cream architecture, lush greenery, elegant elevated walkway, soft golden sky, grainy vintage travel poster texture, human scale optimistic future, no text. Full bleed artwork only. No website UI, no typography, no lettering, no watermark. Visually sophisticated and distinctive.",
+    "tool": "Built-in image_gen"
+  }
+]

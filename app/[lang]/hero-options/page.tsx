@@ -4,6 +4,9 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import { getDictionary } from "../../../lib/dictionaries";
 import { localeParam } from "../../../lib/locale-param";
+import type { Locale } from "../../../lib/i18n";
+import { concepts } from "./concepts";
+import { ConceptHero } from "./concept-hero";
 import "./hero-options.css";
 
 export const metadata: Metadata = {
@@ -14,7 +17,7 @@ export const metadata: Metadata = {
 type Home = ReturnType<typeof getDictionary>["home"];
 type Hero = Home["hero"];
 type Source = "Video" | "KI-Bild" | "Ohne Foto" | "Bestand";
-type Variant = { id: string; name: string; source: Source; note: string; render: (home: Home) => ReactNode };
+type Variant = { id: string; name: string; source: Source; note: string; iteration?: boolean; render: (home: Home, lang: Locale) => ReactNode };
 
 function Copy({ hero, dark = false, checks = true }: { hero: Hero; dark?: boolean; checks?: boolean }) {
   return (
@@ -318,7 +321,7 @@ const ROUND_ONE: Variant[] = [
 ];
 
 type Layout = "light" | "dark" | "veil" | "half" | "tear-hero" | "tear" | "tear-flip" | "blob" | "circle" | "arch" | "slant" | "card" | "offset" | "duo-tear";
-type Shot = { id: string; name: string; src: string; layout: Layout; note: string; position?: string };
+type Shot = { id: string; name: string; src: string; layout: Layout; note: string; position?: string; iteration?: boolean };
 
 function ShapeHero({ hero, src, shape, position = "50% 30%" }: { hero: Hero; src: string; shape: Layout; position?: string }) {
   return (
@@ -373,6 +376,7 @@ const GALLERY: Shot[] = [
   { id: "g-tear-night", name: "Abendstimmung im Tropfen", src: R1("night"), layout: "tear-hero", position: "72% 40%", note: "Dunkles Motiv im hellen Layout. Der Kontrast macht die Form zum Blickfang." },
   { id: "g-tear-team", name: "Kundenteam im Tropfen", src: R1("team"), layout: "tear-hero", position: "68% 40%", note: "Team-Szene in der heutigen Tropfenform." },
   { id: "g-tear-workshop", name: "Workshop im Tropfen", src: R1("workshop"), layout: "tear-hero", position: "65% 35%", note: "Whiteboard-Szene in der Tropfenform." },
+  { id: "g-tear-workshop-agent", name: "Workshop im Tropfen: Agent-Workflow", src: R1("workshop-agent"), layout: "tear-hero", position: "65% 35%", iteration: true, note: "Neue Iteration von 26. Auf dem Whiteboard steht jetzt ein handgezeichneter KI-Agent-Workflow für den Kundenservice." },
   { id: "g-tear-thinking", name: "Ruhiger Moment im Tropfen", src: R1("thinking"), layout: "tear-hero", position: "70% 40%", note: "Fensterblick in der Tropfenform." },
   { id: "g-tear-sq-office", name: "Tropfen: am Laptop", src: A("teardrop-office"), layout: "tear", note: "Eigens für die Tropfenform generiert: zentriertes Motiv mit Luft um den Kopf." },
   { id: "g-tear-sq-smile", name: "Tropfen: Lächeln", src: A("teardrop-smile"), layout: "tear", note: "Freundliches Porträt, zentriert für den Tropfen-Ausschnitt." },
@@ -422,6 +426,8 @@ const GALLERY: Shot[] = [
   { id: "g-duo-tear-studio", name: "Duoton-Tropfen: Studio", src: R1("studio"), layout: "duo-tear", position: "75% 30%", note: "Studio-Porträt orange eingefärbt im Tropfen." },
 ];
 
+const FIRST_CONCEPT = ROUND_ONE.length + GALLERY.filter((shot) => !shot.iteration).length + 1;
+
 const VARIANTS: Variant[] = [
   ...ROUND_ONE,
   ...GALLERY.map((shot): Variant => ({
@@ -429,9 +435,27 @@ const VARIANTS: Variant[] = [
     name: shot.name,
     source: "KI-Bild",
     note: `${LAYOUT_NAMES[shot.layout]}. ${shot.note}`,
+    iteration: shot.iteration,
     render: ({ hero }) => LAYOUTS[shot.layout](hero, shot),
   })),
+  ...concepts.map((concept, index): Variant => ({
+    id: `art-${concept.id}`,
+    name: concept.name,
+    source: "KI-Bild",
+    note: `${concept.medium}. ${concept.note}`,
+    render: ({ hero }, lang) => (
+      <ConceptHero concept={concept} hero={hero} lang={lang} number={FIRST_CONCEPT + index} />
+    ),
+  })),
 ];
+
+let count = 0;
+let suffix = 0;
+const LABELS = VARIANTS.map((v) => {
+  if (v.iteration) return `${String(count).padStart(2, "0")}${"bcdefgh"[suffix++]}`;
+  suffix = 0;
+  return String(++count).padStart(2, "0");
+});
 
 export default async function HeroOptionsPage({ params }: PageProps<"/[lang]/hero-options">) {
   const lang = await localeParam(params);
@@ -453,28 +477,29 @@ export default async function HeroOptionsPage({ params }: PageProps<"/[lang]/her
       </svg>
       <header className="w speaking-page-header">
         <Link className="lnk" href="/">← Zur Startseite</Link>
-        <div className="tag">Hero · {VARIANTS.length} Varianten</div>
+        <div className="tag">Hero · {count} Varianten</div>
         <h1>Welcher Hero passt?</h1>
         <p className="intro">
           Alternativen zum aktuellen Video. Einige nutzen Ausschnitte aus Ihrer Aufnahme,
           einige sind mit Codex neu generiert, einige kommen ganz ohne Foto aus. Ab Nummer 22 folgen weitere KI-Motive in verschiedenen Bildformen, darunter die Tropfenform der heutigen Startseite.
-          Alle zeigen den echten Hero-Text. Nennen Sie mir Ihre Favoriten per Nummer.
+          Ab Nummer {FIRST_CONCEPT} ergänzen 25 neue Bildstile die Sammlung, darunter Papierkunst, Risografie, Aquarell und Pixel Art. Alle zeigen den echten Hero-Text. Nennen Sie mir Ihre Favoriten per Nummer.
         </p>
+        <Link className="lnk" href="#art-paper">Direkt zu den 25 neuen Bildstilen ↓</Link>
         <details className="ho-jump-wrap">
-          <summary>Alle {VARIANTS.length} Varianten anzeigen</summary>
+          <summary>Alle {count} Varianten anzeigen</summary>
           <nav className="ho-jump" aria-label="Varianten">
-            {VARIANTS.map((v, i) => <a key={v.id} href={`#${v.id}`}>{String(i + 1).padStart(2, "0")} {v.name}</a>)}
+            {VARIANTS.map((v, i) => <a key={v.id} href={`#${v.id}`}>{LABELS[i]} {v.name}</a>)}
           </nav>
         </details>
       </header>
       {VARIANTS.map((v, i) => (
         <section key={v.id} id={v.id} className="ho-variant">
           <div className="w ho-label">
-            <h2>{String(i + 1).padStart(2, "0")} · {v.name}</h2>
+            <h2>{LABELS[i]} · {v.name}</h2>
             <span className="ho-source">{v.source}</span>
             <p>{v.note}</p>
           </div>
-          <div className="ho-stage">{v.render(home)}</div>
+          <div className="ho-stage">{v.render(home, lang)}</div>
         </section>
       ))}
     </main>
